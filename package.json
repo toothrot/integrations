@@ -7,7 +7,7 @@
     "node": ">= 0.8"
   },
   "repository": "https://github.com/segmentio/integrations",
-  "main": "/lib",
+  "main": "lib",
   "scripts": {
     "test": "mocha --reporter spec"
   },
@@ -16,8 +16,9 @@
     "is": "~0.2.6"
   },
   "devDependencies": {
-    "should": "*",
+    "should": "~1.2.2",
     "mocha": "*",
-    "express": "~3.2.4"
+    "express": "~3.2.6",
+    "supertest": "~0.7.0"
   }
 }
