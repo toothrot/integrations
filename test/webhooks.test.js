@@ -5,14 +5,14 @@ var express      = require('express')
   , webhook      = new integrations.Webhooks();
 
 
-var app = express()
-            .use(express.bodyParser());
+var app = express().use(express.bodyParser())
+  , server;
 
 
 describe('Webhooks', function () {
 
-
-  before(function (done) { app.listen(4000, done); });
+  before(function (done) { server = app.listen(4000, done); });
+  after(function(done) { server.close(done); });
 
 
   describe('.enabled()', function () {

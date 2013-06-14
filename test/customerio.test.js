@@ -1,11 +1,20 @@
 
 var express      = require('express')
+  , helpers      = require('./helpers')
   , integrations = require('..')
   , should       = require('should')
+  , settings     = require('./auth.json')['Customer.io']
   , cio          = new integrations['Customer.io']();
 
 
+var app = express().use(express.bodyParser())
+  , server;
+
+
 describe('Customer.io', function () {
+
+  before(function (done) { server = app.listen(4000, done); });
+  after(function(done) { server.close(done); });
 
   describe('.enabled()', function () {
 
@@ -37,12 +46,18 @@ describe('Customer.io', function () {
 
   describe('.track()', function () {
 
-    it('should format the track request properly', function () {
+    it('should get a good response from the API', function (done) {
+      var track = helpers.track();
+      cio.track(track, settings, done);
     });
   });
 
   describe('.identify()', function () {
 
+    it('should get a good response from the API', function (done) {
+      var identify = helpers.identify();
+      cio.identify(identify, settings, done);
+    });
   });
 
 
