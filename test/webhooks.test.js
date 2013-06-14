@@ -2,7 +2,6 @@
 var express      = require('express')
   , integrations = require('..')
   , should       = require('should')
-  , supertest    = require('supertest')
   , webhook      = new integrations.Webhooks();
 
 

@@ -13,7 +13,8 @@
   },
   "dependencies": {
     "request-retry": "0.0.1",
-    "is": "~0.2.6"
+    "is": "~0.2.6",
+    "clone": "~0.1.9"
   },
   "devDependencies": {
     "should": "~1.2.2",

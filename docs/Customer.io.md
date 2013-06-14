@@ -15,7 +15,4 @@
 
 ## Special Properties
 
-  * `userId`  - aliased to `id`
   * `created` - aliased to `created_at` in seconds since epoch
-  * `email`
-  * `name`
