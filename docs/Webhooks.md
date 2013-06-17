@@ -12,6 +12,10 @@
   By default, webhooks will send whenever they receive a message.
 
 
+## Special Traits
+
+  None
+
 ## Special Properties
 
   None

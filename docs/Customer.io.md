@@ -13,6 +13,10 @@
   Customer.io will only send for server-side events, or specifically enabled calls.
 
 
-## Special Properties
+## Special Traits
 
   * `created` - aliased to `created_at` in seconds since epoch
+
+## Special Properties
+
+  None

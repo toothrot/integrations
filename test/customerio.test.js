@@ -50,6 +50,15 @@ describe('Customer.io', function () {
       var track = helpers.track();
       cio.track(track, settings, done);
     });
+
+    it('will error on an invalid set of keys', function (done) {
+      var track = helpers.track();
+      cio.track(track, { apiKey : 'x', siteId : 'x' }, function (err) {
+        should.exist(err);
+        err.status.should.eql(401);
+        done();
+      });
+    });
   });
 
   describe('.identify()', function () {
@@ -57,6 +66,15 @@ describe('Customer.io', function () {
     it('should get a good response from the API', function (done) {
       var identify = helpers.identify();
       cio.identify(identify, settings, done);
+    });
+
+    it('will error on an invalid set of keys', function (done) {
+      var identify = helpers.identify();
+      cio.identify(identify, { apiKey : 'x', siteId : 'x' }, function (err) {
+        should.exist(err);
+        err.status.should.eql(401);
+        done();
+      });
     });
   });
 
