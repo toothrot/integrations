@@ -1,10 +1,15 @@
 
 # Google Analytics
 
+### Settings
+
+  * serversideTrackingId - tracking id to use for sending server-side events.
+
+
 ## Classic
 
 
-### Settings
+
 ### Enabled Messages
 ### Special Traits
 ### Special Properties
