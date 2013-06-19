@@ -14,7 +14,8 @@
   "dependencies": {
     "request-retry": "0.0.1",
     "is": "~0.2.6",
-    "clone": "~0.1.9"
+    "clone": "~0.1.9",
+    "string-hash": "~1.1.0"
   },
   "devDependencies": {
     "should": "~1.2.2",
