@@ -1,5 +1,6 @@
 
 var express      = require('express')
+  , facade       = require('segmentio-facade')
   , helpers      = require('./helpers')
   , integrations = require('..')
   , should       = require('should')
@@ -19,9 +20,9 @@ describe('Customer.io', function () {
   describe('.enabled()', function () {
 
     it('should only be enabled for server side messages', function () {
-      cio.enabled({ channel : 'server' }).should.be.ok;
-      cio.enabled({ channel : 'client' }).should.not.be.ok;
-      cio.enabled({}).should.not.be.ok;
+      cio.enabled(new facade.Alias({ channel : 'server' })).should.be.ok;
+      cio.enabled(new facade.Alias({ channel : 'client' })).should.not.be.ok;
+      cio.enabled(new facade.Alias({})).should.not.be.ok;
     });
   });
 

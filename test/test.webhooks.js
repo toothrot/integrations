@@ -1,6 +1,7 @@
 
 var express      = require('express')
   , integrations = require('..')
+  , helpers      = require('./helpers')
   , should       = require('should')
   , webhook      = new integrations.Webhooks();
 
@@ -57,7 +58,7 @@ describe('Webhooks', function () {
  */
 function testApiCall (call) {
 
-  var message  = { name: 'My message' };
+  var message = helpers[call]();
 
   describe('.' + call + '()', function () {
 
@@ -67,7 +68,8 @@ function testApiCall (call) {
         , settings = { globalHook : 'http://localhost:4000' + route };
 
       app.post(route, function (req, res, next) {
-        req.body.should.eql(message);
+        req.body.timestamp = new Date(req.body.timestamp);
+        req.body.should.eql(message.json());
         res.send();
       });
 
@@ -83,7 +85,8 @@ function testApiCall (call) {
         , status   = 503;
 
       app.post(route, function (req, res, next) {
-        req.body.should.eql(message);
+        req.body.timestamp = new Date(req.body.timestamp);
+        req.body.should.eql(message.json());
         res.send(status);
       });
 
