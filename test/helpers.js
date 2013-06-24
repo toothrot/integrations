@@ -22,8 +22,8 @@ exports.identify = function () {
   return new facade.Identify({
     userId : 'aaa',
     traits : {
-      //created : new Date(),
-      name  : 'John Doe',
+      firstName   : 'John',
+      'Last Name' : 'Doe',
       email : email
     },
     timestamp : new Date(),

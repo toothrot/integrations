@@ -82,10 +82,13 @@ describe('HelpScout', function () {
     });
 
     it('should return an existing user', function (done) {
-      var email = helpers.identify().email();
+      var identify = helpers.identify()
+        , email    = identify.email();
       helpscout._getUser({ email : email }, settings, function (err, user) {
         should.not.exist(err);
         should.exist(user);
+        user.firstName.should.eql(identify.firstName());
+        user.lastName.should.eql(identify.lastName());
         done();
       });
     });
