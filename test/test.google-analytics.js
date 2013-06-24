@@ -1,4 +1,5 @@
 var auth            = require('./auth.json')
+  , facade          = require('segmentio-facade')
   , GoogleAnalytics = require('..')['Google Analytics']
   , ga              = new GoogleAnalytics()
   , helpers         = require('./helpers')
@@ -12,9 +13,9 @@ describe('Google Analytics', function () {
 
     describe('.enabled()', function () {
       it('should only be enabled for server side messages', function () {
-        ga.enabled({ channel : 'server' }).should.be.ok;
-        ga.enabled({ channel : 'client' }).should.not.be.ok;
-        ga.enabled({}).should.not.be.ok;
+        ga.enabled(new facade.Track({ channel : 'server' })).should.be.ok;
+        ga.enabled(new facade.Track({ channel : 'client' })).should.not.be.ok;
+        ga.enabled(new facade.Track({})).should.not.be.ok;
       });
     });
 
@@ -61,9 +62,9 @@ describe('Google Analytics', function () {
 
     describe('.enabled()', function () {
       it('should only be enabled for server side messages', function () {
-        ga.enabled({ channel : 'server' }).should.be.ok;
-        ga.enabled({ channel : 'client' }).should.not.be.ok;
-        ga.enabled({}).should.not.be.ok;
+        ga.enabled(new facade.Track({ channel : 'server' })).should.be.ok;
+        ga.enabled(new facade.Track({ channel : 'client' })).should.not.be.ok;
+        ga.enabled(new facade.Track({})).should.not.be.ok;
       });
     });
 

@@ -13,9 +13,9 @@ describe('HelpScout', function () {
 
   describe('.enabled()', function () {
     it('should only be enabled for server side messages', function () {
-      helpscout.enabled({ channel : 'server' }).should.be.ok;
-      helpscout.enabled({ channel : 'client' }).should.not.be.ok;
-      helpscout.enabled({}).should.not.be.ok;
+      helpscout.enabled(new facade.Track({ channel : 'server' })).should.be.ok;
+      helpscout.enabled(new facade.Track({ channel : 'client' })).should.not.be.ok;
+      helpscout.enabled(new facade.Track({})).should.not.be.ok;
     });
   });
 
