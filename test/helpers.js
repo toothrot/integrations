@@ -1,5 +1,7 @@
 
-var facade = require('segmentio-facade');
+var facade = require('segmentio-facade')
+  , random = Math.floor(Math.random() * 10000)
+  , email  = 'mordac' + random + '@segment.io';
 
 
 exports.track = function () {
@@ -21,7 +23,8 @@ exports.identify = function () {
     userId : 'aaa',
     traits : {
       //created : new Date(),
-      name    : 'John Doe'
+      name  : 'John Doe',
+      email : email
     },
     timestamp : new Date(),
     channel : 'server'

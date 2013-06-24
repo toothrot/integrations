@@ -1,11 +1,12 @@
 var auth         = require('./auth')
+  , helpers      = require('./helpers')
   , integrations = require('..')
   , should       = require('should');
 
 
 var helpscout = new integrations['HelpScout']()
-  , settings  = auth['HelpScout']
-  , email     = 'mordac@segment.io';
+  , settings  = auth['HelpScout'];
+
 
 
 describe('HelpScout', function () {
@@ -20,27 +21,50 @@ describe('HelpScout', function () {
 
 
   describe('.validate()', function () {
+
   });
 
 
   describe('.track()', function () {
+    it('should do nothing on track', function (done) {
+      helpscout.track(helpers.track(), settings, done);
+    });
   });
 
 
   describe('.identify()', function () {
+    var identify = helpers.identify()
+      , filter   = { email : identify.email() };
+
+    it('should be able to identify a new user', function (done) {
+      this.timeout(4000);
+
+      helpscout.identify(identify, settings, function (err) {
+        should.not.exist(err);
+        helpscout._getUser(filter, settings, function (err, user) {
+          should.not.exist(err);
+          should.exist(user);
+          should.exist(user.id);
+          done();
+        });
+      });
+    });
   });
 
 
   describe('.alias()', function () {
+    it('should do nothing on alias', function (done) {
+      helpscout.alias(helpers.alias(), settings, done);
+    });
   });
 
 
-  describe('._getByEmail()', function () {
+  describe('._getUser()', function () {
 
     it('should error on an invalid key', function (done) {
-      var badKey = 'segment'
-        , email  = 'calvin@segment.io';
-      helpscout._getByEmail(email, badKey, function (err, user) {
+      var settings = { apiKey : 'segment' }
+        , email    = 'calvin@segment.io';
+      helpscout._getUser({ email : email }, settings, function (err, user) {
         should.exist(err);
         err.status.should.eql(401);
         should.not.exist(user);
@@ -50,7 +74,7 @@ describe('HelpScout', function () {
 
     it('should not return a non-existent user', function (done) {
       var email = 'non-existent@segment.io';
-      helpscout._getByEmail(email, settings.apiKey, function (err, user) {
+      helpscout._getUser({ email : email }, settings, function (err, user) {
         should.not.exist(err);
         should.not.exist(user);
         done();
@@ -58,26 +82,12 @@ describe('HelpScout', function () {
     });
 
     it('should return an existing user', function (done) {
-      helpscout._getByEmail(email, settings.apiKey, function (err, user) {
+      var email = helpers.identify().email();
+      helpscout._getUser({ email : email }, settings, function (err, user) {
         should.not.exist(err);
         should.exist(user);
         done();
       });
     });
   });
-
-  describe('._updateUser()', function () {
-    it('should properly update a user', function (done) {
-
-
-
-    });
-  });
-
-
-  describe('._createUser()', function () {
-
-
-  });
-
 });
