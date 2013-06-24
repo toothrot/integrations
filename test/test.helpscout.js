@@ -1,4 +1,5 @@
 var auth         = require('./auth')
+  , facade       = require('segmentio-facade')
   , helpers      = require('./helpers')
   , integrations = require('..')
   , should       = require('should');
@@ -6,7 +7,6 @@ var auth         = require('./auth')
 
 var helpscout = new integrations['HelpScout']()
   , settings  = auth['HelpScout'];
-
 
 
 describe('HelpScout', function () {
@@ -21,7 +21,23 @@ describe('HelpScout', function () {
 
 
   describe('.validate()', function () {
+    it('should not validate settings without an apiKey', function () {
+      var identify = helpers.identify();
+      helpscout.validate(identify, {}).should.be.instanceOf(Error);
+    });
 
+    it('should not validate messages without an email', function () {
+      var identify = new facade.Identify({
+        traits : {},
+        userId : 'aaa'
+      });
+      helpscout.validate(identify, { apiKey : 'x' }).should.be.instanceOf(Error);
+    });
+
+    it('should validate proper identify calls', function () {
+      var identify = helpers.identify();
+      should.not.exist(helpscout.validate(identify, { apiKey : 'x' }));
+    });
   });
 
 
