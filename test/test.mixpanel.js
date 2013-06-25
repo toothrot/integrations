@@ -49,5 +49,10 @@ describe('Mixpanel', function () {
     });
   });
 
-  describe('.alias()', function () {});
+  describe('.alias()', function () {
+    var alias = helpers.alias();
+    it('should be able to alias properly', function (done) {
+      mixpanel.alias(alias, settings, done);
+    });
+  });
 });
