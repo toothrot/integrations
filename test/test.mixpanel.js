@@ -34,6 +34,10 @@ describe('Mixpanel', function () {
 
 
   describe('.track()', function () {
+    var track = helpers.track();
+    it('should be able to track correctly', function (done) {
+      mixpanel.track(track, settings, done);
+    });
   });
 
 
