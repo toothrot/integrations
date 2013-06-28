@@ -36,7 +36,6 @@ describe('KISSmetrics', function () {
   describe('.track()', function () {
     var track = helpers.track();
     it('should be able to track correctly', function (done) {
-      this.timeout(5000);
       kissmetrics.track(track, settings, done);
     });
   });
