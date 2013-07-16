@@ -54,6 +54,7 @@ describe('HubSpot', function () {
 
 
   describe('.identify()', function () {
+    this.timeout(5000);
     var identify = helpers.identify();
 
     it('should identify successfully', function (done) {
@@ -65,12 +66,17 @@ describe('HubSpot', function () {
   describe('.track()', function () {
     var track = helpers.track();
 
-    it('should track successfully', function () {
-
+    it('should track successfully', function (done) {
+      hubspot.track(track, settings, done);
     });
   });
 
 
   describe('.alias()', function () {
+    var alias = helpers.alias();
+
+    it('should do nothing', function (done) {
+      hubspot.alias(alias, settings, done);
+    });
   });
 });
