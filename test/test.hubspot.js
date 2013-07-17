@@ -12,24 +12,37 @@ var hubspot  = new integrations['HubSpot']()
 describe('HubSpot', function () {
 
   describe('.enabled()', function () {
-    it('should only be enabled for server side messages', function () {
+    var options = { HubSpot : true };
+
+    it('should only be enabled for server side messages, where it is enabled', function () {
       hubspot.enabled(new facade.Track({
         channel : 'server',
-        userId  : 'calvin@segment.io'
+        userId  : 'calvin@segment.io',
+        options : options
       })).should.be.ok;
+
       hubspot.enabled(new facade.Track({
-        channel : 'client',
+        channel : 'server',
         userId  : 'calvin@segment.io'
       })).should.not.be.ok;
 
-      hubspot.enabled(new facade.Track({ userId : 'calvin@segment.io'})).should.not.be.ok;
+      hubspot.enabled(new facade.Track({
+        userId  : 'calvin@segment.io',
+        channel : 'client',
+        options : options
+      })).should.not.be.ok;
     });
 
     it('should not be enabled without an email', function () {
-      hubspot.enabled(new facade.Track({ channel : 'server' })).should.not.be.ok;
       hubspot.enabled(new facade.Track({
         channel : 'server',
-        userId  : 'calvin@segment.io'
+        options : options
+      })).should.not.be.ok;
+
+      hubspot.enabled(new facade.Track({
+        channel : 'server',
+        userId  : 'calvin@segment.io',
+        options : options
       })).should.be.ok;
     });
   });
