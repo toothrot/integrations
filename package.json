@@ -21,7 +21,8 @@
     "debug": "~0.7.2",
     "extend": "~1.1.3",
     "lru-cache": "~2.3.0",
-    "component-type": "component/type"
+    "component-type": "component/type",
+    "unix-time": "~1.0.1"
   },
   "devDependencies": {
     "should": "~1.2.2",
