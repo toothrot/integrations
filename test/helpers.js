@@ -24,7 +24,8 @@ exports.identify = function () {
     traits : {
       firstName   : 'John',
       'Last Name' : 'Doe',
-      email : email
+      email       : email,
+      company     : 'Segment.io'
     },
     timestamp : new Date(),
     channel : 'server'
