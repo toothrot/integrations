@@ -19,10 +19,10 @@ describe('Webhooks', function () {
   describe('.enabled()', function () {
 
     it('should always be enabled', function () {
-
-      webhook.enabled({ channel : 'server' }).should.be.ok;
-      webhook.enabled({ channel : 'client' }).should.be.ok;
-      webhook.enabled().should.be.ok;
+      var message = helpers.identify();
+      webhook.enabled(message, { channel : 'server' }).should.be.ok;
+      webhook.enabled(message, { channel : 'client' }).should.be.ok;
+      webhook.enabled(message, {}).should.be.ok;
     });
   });
 
