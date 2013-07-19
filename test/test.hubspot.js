@@ -34,16 +34,16 @@ describe('HubSpot', function () {
     });
 
     it('should not be enabled without an email', function () {
-      hubspot.enabled(new facade.Track({
+      should.not.exist(hubspot.enabled(new facade.Track({
         channel : 'server',
         options : options
-      })).should.not.be.ok;
+      })));
 
-      hubspot.enabled(new facade.Track({
+      should.exist(hubspot.enabled(new facade.Track({
         channel : 'server',
         userId  : 'calvin@segment.io',
         options : options
-      })).should.be.ok;
+      })));
     });
   });
 
