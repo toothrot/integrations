@@ -65,6 +65,11 @@ describe('HelpScout', function () {
         });
       });
     });
+
+    it('should be able to identify an existing user', function (done) {
+      this.timeout(4000);
+      helpscout.identify(identify, settings, done);
+    });
   });
 
 

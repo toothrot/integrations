@@ -25,7 +25,13 @@ exports.identify = function () {
       firstName   : 'John',
       'Last Name' : 'Doe',
       email       : email,
-      company     : 'Segment.io'
+      company     : 'Segment.io',
+      websites    : [
+        'http://calv.info',
+        'http://ianstormtaylor.com',
+        'http://ivolo.me',
+        'http://rein.pk'
+      ]
     },
     timestamp : new Date(),
     channel : 'server'
