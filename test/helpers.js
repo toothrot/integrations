@@ -13,7 +13,14 @@ exports.track = function () {
       revenue : 19.95
     },
     channel    : 'server',
-    timestamp  : new Date()
+    timestamp  : new Date(),
+    options : {
+      traits : {
+        email   : email,
+        age     : 23,
+        created : new Date()
+      }
+    }
   });
 };
 
