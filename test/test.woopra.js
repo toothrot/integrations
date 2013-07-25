@@ -41,7 +41,7 @@ describe('Woopra', function () {
 
   describe('.identify()', function () {
 
-    it('should track successfully', function (done) {
+    it('should identify successfully', function (done) {
       var identify = helpers.identify();
       woopra.identify(identify, settings, done);
     });
