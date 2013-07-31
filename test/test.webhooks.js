@@ -68,8 +68,7 @@ function testApiCall (call) {
         , settings = { globalHook : 'http://localhost:4000' + route };
 
       app.post(route, function (req, res, next) {
-        req.body.timestamp = new Date(req.body.timestamp);
-        req.body.should.eql(message.json());
+        JSON.stringify(req.body).should.eql(JSON.stringify(message.json()));
         res.send();
       });
 
@@ -85,8 +84,7 @@ function testApiCall (call) {
         , status   = 503;
 
       app.post(route, function (req, res, next) {
-        req.body.timestamp = new Date(req.body.timestamp);
-        req.body.should.eql(message.json());
+        JSON.stringify(req.body).should.eql(JSON.stringify(message.json()));
         res.send(status);
       });
 
