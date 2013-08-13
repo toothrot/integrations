@@ -104,4 +104,20 @@ describe('Google Analytics', function () {
       });
     });
   });
+
+
+  describe('main', function () {
+
+    describe('._pageview()', function () {
+      it('should pageview with classic settings', function (done) {
+        var settings = auth['Google Analytics'].classic;
+        ga._pageview(helpers.track(), settings, done);
+      });
+
+      it('should pageview with universal settings', function (done) {
+        var settings = auth['Google Analytics'].universal;
+        ga._pageview(helpers.track(), settings, done);
+      });
+    });
+  });
 });
