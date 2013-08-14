@@ -18,7 +18,9 @@ exports.track = function () {
       traits : {
         email   : email,
         age     : 23,
-        created : new Date()
+        created : new Date(),
+        bad     : null,
+        alsoBad : undefined
       }
     }
   });
@@ -38,7 +40,9 @@ exports.identify = function () {
         'http://ianstormtaylor.com',
         'http://ivolo.me',
         'http://rein.pk'
-      ]
+      ],
+      bad     : null,
+      alsoBad : undefined
     },
     timestamp : new Date(),
     channel : 'server'
