@@ -29,6 +29,7 @@
     "mocha": "*",
     "express": "~3.2.6",
     "supertest": "~0.7.0",
-    "segmentio-facade": "segmentio/facade"
+    "segmentio-facade": "segmentio/facade",
+    "uid": "0.0.2"
   }
 }
