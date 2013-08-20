@@ -27,6 +27,15 @@ exports.track = function () {
 };
 
 
+exports.track.bare = function () {
+  return new facade.Track({
+    userId  : 'aaa',
+    event   : 'Bear tracks',
+    channel : 'server'
+  });
+};
+
+
 exports.identify = function () {
   return new facade.Identify({
     userId : 'aaa',
