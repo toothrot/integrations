@@ -1,16 +1,22 @@
 
 var facade = require('segmentio-facade')
-  , random = Math.floor(Math.random() * 10000)
-  , email  = 'mordac' + random + '@segment.io';
+  , extend = require('extend')
+  , uid    = require('uid');
 
 
-exports.track = function () {
-  return new facade.Track({
-    userId     : 'aaa',
+var firstId  = uid()
+  , secondId = uid()
+  , email    = 'testing-' + firstId + '@segment.io';
+
+
+exports.track = function (options) {
+  options = extend({
+    userId     : firstId,
     event      : 'Baked a cake',
     properties : {
       layers  : ['chocolate', 'strawberry', 'fudge'],
-      revenue : 19.95
+      revenue : 19.95,
+      numLayers : 10
     },
     channel    : 'server',
     timestamp  : new Date(),
@@ -23,7 +29,8 @@ exports.track = function () {
         alsoBad : undefined
       }
     }
-  });
+  }, options);
+  return new facade.Track(options);
 };
 
 
@@ -36,14 +43,21 @@ exports.track.bare = function () {
 };
 
 
-exports.identify = function () {
-  return new facade.Identify({
-    userId : 'aaa',
+
+/**
+ * Use a particular user id
+ */
+
+exports.identify = function (options) {
+  options = extend({
+    userId : firstId,
     traits : {
       firstName   : 'John',
       'Last Name' : 'Doe',
       email       : email,
       company     : 'Segment.io',
+      city        : 'San Francisco',
+      state       : 'CA',
       websites    : [
         'http://calv.info',
         'http://ianstormtaylor.com',
@@ -55,15 +69,17 @@ exports.identify = function () {
     },
     timestamp : new Date(),
     channel : 'server'
-  });
+  }, options);
+  return new facade.Identify(options);
 };
 
 
-exports.alias = function () {
-  return new facade.Alias({
-    from      : 'aaa',
-    to        : 'bbb',
+exports.alias = function (options) {
+  options = extend({
+    from      : firstId,
+    to        : secondId,
     channel   : 'server',
     timestamp : new Date()
-  });
+  }, options);
+  return new facade.Alias(options);
 };
