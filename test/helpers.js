@@ -34,12 +34,13 @@ exports.track = function (options) {
 };
 
 
-exports.track.bare = function () {
-  return new facade.Track({
+exports.track.bare = function (options) {
+  options = extend({
     userId  : 'aaa',
     event   : 'Bear tracks',
     channel : 'server'
-  });
+  }, options);
+  return new facade.Track(options);
 };
 
 
