@@ -43,6 +43,14 @@ describe('Mixpanel', function () {
     it('should be able to track a bare call', function (done) {
       mixpanel.track(helpers.track.bare(), settings, done);
     });
+
+    it('should be able to track ill-formed traits', function (done) {
+      mixpanel.track(helpers.track.bare({
+        context : {
+          traits : 'aaa'
+        }
+      }), settings, done);
+    });
   });
 
 
