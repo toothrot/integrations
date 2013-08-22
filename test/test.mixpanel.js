@@ -30,6 +30,19 @@ describe('Mixpanel', function () {
       var identify = helpers.identify();
       should.not.exist(mixpanel.validate(identify, { token : 'x' }));
     });
+
+    it('should not validate old track calls without an apiKey', function () {
+      var track = helpers.track({ timestamp : new Date('5/10/2013') });
+      mixpanel.validate(track, { token : 'x' }).should.be.instanceOf(Error);
+    });
+
+    it('should validate old track calls with an apiKey', function () {
+      var track = helpers.track({ timestamp : new Date('5/10/2013') });
+      should.not.exist(mixpanel.validate(track, {
+        token : 'x',
+        apiKey : 'x'
+      }));
+    });
   });
 
 
