@@ -22,7 +22,8 @@
     "extend": "~1.1.3",
     "lru-cache": "~2.3.0",
     "unix-time": "~1.0.1",
-    "segmentio-integration": "git://github.com/segmentio/integration"
+    "segmentio-integration": "git://github.com/segmentio/integration",
+    "new-date": "~0.1.1"
   },
   "devDependencies": {
     "should": "~1.2.2",
