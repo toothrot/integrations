@@ -17,7 +17,7 @@ exports.track = function (options) {
       layers  : ['chocolate', 'strawberry', 'fudge'],
       revenue : 19.95,
       numLayers : 10,
-      bacon : 10000,
+      bacon : '1',
       x : (new Date()).toISOString()
     },
     channel    : 'server',
