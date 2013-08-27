@@ -78,7 +78,9 @@ exports.identify = function (options) {
         'http://rein.pk'
       ],
       bad     : null,
-      alsoBad : undefined
+      alsoBad : undefined,
+      met : (new Date()).toISOString(),
+      created : new Date('1/12/2014')
     },
     timestamp : new Date(),
     channel : 'server'

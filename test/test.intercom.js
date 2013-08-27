@@ -52,7 +52,6 @@ describe('Intercom', function () {
     this.timeout(4000);
     it('should be able to identify correctly', function (done) {
       intercom.identify(identify, settings, function (err) {
-        debugger;
         should.not.exist(err);
         done();
       });
