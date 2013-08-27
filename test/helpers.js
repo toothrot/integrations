@@ -18,7 +18,12 @@ exports.track = function (options) {
       revenue : 19.95,
       numLayers : 10,
       bacon : '1',
-      x : (new Date()).toISOString()
+      date : (new Date()).toISOString(),
+      address : {
+        state : 'CA',
+        zip  : 94107,
+        city : 'San Francisco'
+      }
     },
     channel    : 'server',
     timestamp  : new Date(),
@@ -28,7 +33,12 @@ exports.track = function (options) {
         age     : 23,
         created : new Date(),
         bad     : null,
-        alsoBad : undefined
+        alsoBad : undefined,
+        address : {
+          state : 'CA',
+          zip  : 94107,
+          city : 'San Francisco'
+        }
       }
     }
   }, options);
