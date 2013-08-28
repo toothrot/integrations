@@ -12,10 +12,10 @@ var helpscout = new integrations['HelpScout']()
 describe('HelpScout', function () {
 
   describe('.enabled()', function () {
-    it('should only be enabled for server side messages', function () {
+    it('should only be enabled for all messages', function () {
       helpscout.enabled(new facade.Track({ channel : 'server' })).should.be.ok;
-      helpscout.enabled(new facade.Track({ channel : 'client' })).should.not.be.ok;
-      helpscout.enabled(new facade.Track({})).should.not.be.ok;
+      helpscout.enabled(new facade.Track({ channel : 'client' })).should.be.ok;
+      helpscout.enabled(new facade.Track({})).should.be.ok;
     });
   });
 
