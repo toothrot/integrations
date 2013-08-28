@@ -40,7 +40,8 @@ exports.track = function (options) {
           zip  : 94107,
           city : 'San Francisco'
         }
-      }
+      },
+      ip : '12.212.12.49'
     }
   }, options);
   return new facade.Track(options);
@@ -84,6 +85,9 @@ exports.identify = function (options) {
       alsoBad : undefined,
       met : (new Date()).toISOString(),
       created : new Date('1/12/2014')
+    },
+    context : {
+      ip : '12.212.12.49'
     },
     timestamp : new Date(),
     channel : 'server'
