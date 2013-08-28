@@ -73,6 +73,7 @@ exports.identify = function (options) {
       company     : 'Segment.io',
       city        : 'San Francisco',
       state       : 'CA',
+      phone       : '5555555555',
       websites    : [
         'http://calv.info',
         'http://ianstormtaylor.com',
