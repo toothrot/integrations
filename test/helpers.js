@@ -17,6 +17,7 @@ exports.track = function (options) {
       layers  : ['chocolate', 'strawberry', 'fudge'],
       revenue : 19.95,
       numLayers : 10,
+      fat : 0.02,
       bacon : '1',
       date : (new Date()).toISOString(),
       address : {
@@ -65,6 +66,7 @@ exports.identify = function (options) {
   options = extend({
     userId : firstId,
     traits : {
+      fat         : 0.02,
       firstName   : 'John',
       'Last Name' : 'Doe',
       email       : email,
