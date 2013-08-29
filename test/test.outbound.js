@@ -13,10 +13,10 @@ describe('Outbound', function () {
 
   describe('.enabled()', function () {
 
-    it('should only be enabled for server side messages', function () {
+    it('should only be enabled for all messages', function () {
       outbound.enabled(new facade.Track({ channel : 'server' })).should.be.ok;
-      outbound.enabled(new facade.Track({ channel : 'client' })).should.not.be.ok;
-      outbound.enabled(new facade.Track({})).should.not.be.ok;
+      outbound.enabled(new facade.Track({ channel : 'client' })).should.be.ok;
+      outbound.enabled(new facade.Track({})).should.be.ok;
     });
   });
 
