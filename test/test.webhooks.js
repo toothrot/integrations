@@ -84,7 +84,10 @@ function testApiCall (call) {
         , status   = 503;
 
       app.post(route, function (req, res, next) {
-        JSON.stringify(req.body).should.eql(JSON.stringify(message.json()));
+        var json = message.json();
+        delete json.context;
+
+        JSON.stringify(req.body).should.eql(JSON.stringify(json));
         res.send(status);
       });
 

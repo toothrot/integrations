@@ -65,10 +65,7 @@ describe('HubSpot', function () {
     });
 
     it('should identify a second time', function (done) {
-      hubspot.identify(identify, settings, function (err) {
-        debugger;
-        done(err);
-      });
+      hubspot.identify(identify, settings, done);
     });
   });
 
