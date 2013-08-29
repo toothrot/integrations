@@ -68,7 +68,11 @@ function testApiCall (call) {
         , settings = { globalHook : 'http://localhost:4000' + route };
 
       app.post(route, function (req, res, next) {
-        JSON.stringify(req.body).should.eql(JSON.stringify(message.json()));
+        var json = message.json();
+        json.options = json.options || json.context;
+        delete json.context;
+
+        serialized(req.body).should.eql(serialized(json));
         res.send();
       });
 
@@ -85,9 +89,10 @@ function testApiCall (call) {
 
       app.post(route, function (req, res, next) {
         var json = message.json();
+        json.options = json.options || json.context;
         delete json.context;
 
-        JSON.stringify(req.body).should.eql(JSON.stringify(json));
+        serialized(req.body).should.eql(serialized(json));
         res.send(status);
       });
 
@@ -98,4 +103,9 @@ function testApiCall (call) {
       });
     });
   });
+}
+
+
+function serialized (obj) {
+  return JSON.parse(JSON.stringify(obj));
 }
