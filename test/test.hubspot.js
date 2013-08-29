@@ -12,37 +12,27 @@ var hubspot  = new integrations['HubSpot']()
 describe('HubSpot', function () {
 
   describe('.enabled()', function () {
-    var options = { HubSpot : true };
 
-    it('should only be enabled for server side messages, where it is enabled', function () {
-      hubspot.enabled(new facade.Track({
-        channel : 'server',
-        userId  : 'calvin@segment.io',
-        options : options
-      })).should.be.ok;
-
+    it('should only be enabled for server side messages', function () {
       hubspot.enabled(new facade.Track({
         channel : 'server',
         userId  : 'calvin@segment.io'
-      })).should.not.be.ok;
+      })).should.be.ok;
 
       hubspot.enabled(new facade.Track({
         userId  : 'calvin@segment.io',
-        channel : 'client',
-        options : options
+        channel : 'client'
       })).should.not.be.ok;
     });
 
     it('should not be enabled without an email', function () {
       should.not.exist(hubspot.enabled(new facade.Track({
-        channel : 'server',
-        options : options
+        channel : 'server'
       })));
 
       should.exist(hubspot.enabled(new facade.Track({
         channel : 'server',
-        userId  : 'calvin@segment.io',
-        options : options
+        userId  : 'calvin@segment.io'
       })));
     });
   });
@@ -75,7 +65,10 @@ describe('HubSpot', function () {
     });
 
     it('should identify a second time', function (done) {
-      hubspot.identify(identify, settings, done);
+      hubspot.identify(identify, settings, function (err) {
+        debugger;
+        done(err);
+      });
     });
   });
 
