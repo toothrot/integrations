@@ -43,7 +43,7 @@ In addition, depending on the type of integration, you will want to add methods 
 
 It's worth checking out our [facade](https://github.com/segmentio/facade) objects to see what sort of fields are available to your provider. In general, you will want to use `.proxy()` to match keys fuzzily. If you see a field being used in multiple places, you can submit a request to add it to facade as well and give it a proper name.
 
-If your integration doesn't use some of these methods, don't bother implementing them. Our service will not send them as a pass through.
+If your integration doesn't use some of these methods, don't bother implementing them. Segment.io just won't send them!
 
 In general, we prefer not to attach extra methods to the integration objects, unless they are specifically useful for testing. In that case, you can prefix those methods with an underscore, or separate them into a different module. We have kept them in a single module for ease of other developers.
 
@@ -65,4 +65,30 @@ You can then mimic existing tests by making sure each of your methods passes suc
 Once you're all set and ready to go, you'll want to first run ```npm install``` to install the necessary requirements.
 
 Next, you'll want to add your settings to the `auth.json` file, and run mocha tests/test.crazymetrics-io.js.
+
+
+## License
+
+(The MIT License)
+
+Copyright (c) 2013 Segment.io &lt;friends@segment.io&gt;
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+'Software'), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 

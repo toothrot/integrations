@@ -84,7 +84,7 @@ exports.identify = function (options) {
       bad     : null,
       alsoBad : undefined,
       met : (new Date()).toISOString(),
-      created : new Date('1/12/2014')
+      created : new Date('1/12/2013')
     },
     context : {
       ip : '12.212.12.49'
