@@ -5,11 +5,11 @@ var auth         = require('./auth')
   , should       = require('should');
 
 
-var helpscout = new integrations['HelpScout']()
-  , settings  = auth['HelpScout'];
+var helpscout = new integrations['Help Scout']()
+  , settings  = auth['Help Scout'];
 
 
-describe('HelpScout', function () {
+describe('Help Scout', function () {
 
   describe('.enabled()', function () {
     it('should only be enabled for all messages', function () {
