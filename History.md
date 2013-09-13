@@ -2,6 +2,7 @@
 ==================
 
   * Renaming HelpScout -> Help Scout
+  * updating version of segmentio/new-date
 
 
 0.1.1 / 2013-09-06
