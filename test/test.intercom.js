@@ -14,9 +14,30 @@ describe('Intercom', function () {
   describe('.enabled()', function () {
     var Track = facade.Track;
     it('should only be enabled for server side messages', function () {
-      intercom.enabled(new Track({ channel : 'server' })).should.be.ok;
-      intercom.enabled(new Track({ channel : 'client' })).should.not.be.ok;
-      intercom.enabled(new Track({})).should.not.be.ok;
+      intercom.enabled(new Track({
+        userId: 'x',
+        channel: 'server'
+      })).should.be.ok;
+
+      intercom.enabled(new Track({
+        userId: 'x',
+        channel: 'client'
+      })).should.not.be.ok;
+
+      intercom.enabled(new Track({
+        userId: 'x'
+      })).should.not.be.ok;
+    });
+
+    it('should require a userId', function () {
+      intercom.enabled(new Track({
+        channel : 'server'
+      })).should.not.be.ok;
+
+      intercom.enabled(new Track({
+        userId: 'x',
+        channel: 'server'
+      })).should.be.ok;
     });
   });
 
