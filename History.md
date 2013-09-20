@@ -1,3 +1,9 @@
+0.1.4 / 2013-09-19
+==================
+
+  * intercom: removing ip and useragent from user update
+  * intercom: adding impressions for track and identify
+
 0.1.3 / 2013-09-16
 ==================
 
