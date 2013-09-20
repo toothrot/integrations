@@ -4,7 +4,7 @@ var facade = require('segmentio-facade')
   , uid    = require('uid');
 
 
-var firstId  = 'iq8ofni'//uid()
+var firstId  = uid()
   , secondId = uid()
   , email    = 'testing-' + firstId + '@segment.io';
 
