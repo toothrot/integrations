@@ -1,3 +1,8 @@
+0.1.6 / 2013-09-30
+==================
+
+  * librato: updating user-agent with segmentio version
+
 0.1.5 / 2013-09-29
 ==================
 
