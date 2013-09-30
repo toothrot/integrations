@@ -1,3 +1,11 @@
+0.1.5 / 2013-09-29
+==================
+
+  * webhooks: increasing retry count
+  * usercycle: adding usercycle by [lfittl](https://github.com/lfittl)
+  * google-analytics: removing default value as set to '1' by [mattsjohnston](https://github.com/mattsjohnston)
+
+
 0.1.4 / 2013-09-19
 ==================
 
