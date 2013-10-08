@@ -41,7 +41,8 @@ exports.track = function (options) {
           city : 'San Francisco'
         }
       },
-      ip : '12.212.12.49'
+      ip : '12.212.12.49',
+      userAgent: 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)'
     }
   }, options);
   return new facade.Track(options);
@@ -84,7 +85,8 @@ exports.identify = function (options) {
       bad     : null,
       alsoBad : undefined,
       met : (new Date()).toISOString(),
-      created : new Date('1/12/2013')
+      created : new Date('1/12/2013'),
+      userAgent: 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)'
     },
     context : {
       ip : '12.212.12.49'
