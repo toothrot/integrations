@@ -1,3 +1,8 @@
+0.1.8 / 2013-10-08
+==================
+
+  * google-analytics: checking for value, removing default value
+
 0.1.7 / 2013-10-06
 ==================
 
