@@ -1,3 +1,8 @@
+0.1.9 / 2013-10-08
+==================
+
+  * mixpanel: add Mixpanel special property $username to identify ([brianpmarks](https://github.com/brianpmarks))
+
 0.1.8 / 2013-10-08
 ==================
 
