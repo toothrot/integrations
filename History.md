@@ -1,3 +1,8 @@
+0.1.10 / 2013-10-08
+===================
+
+  * mixpanel: adding version to $os and $browser (calvinfo)
+
 0.1.9 / 2013-10-08
 ==================
 
