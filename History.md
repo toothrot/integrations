@@ -1,3 +1,8 @@
+0.1.11 / 2013-10-08
+===================
+
+  * mixpanel: adding detection for invalid dates (calvinfo)
+
 0.1.10 / 2013-10-08
 ===================
 
