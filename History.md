@@ -1,3 +1,8 @@
+0.1.13 / 2013-10-16
+===================
+
+  google-analytics: renaming 'universal' -> 'serversideClassic' (calvinfo)
+
 0.1.12 / 2013-10-16
 ===================
 
