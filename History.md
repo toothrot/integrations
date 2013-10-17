@@ -1,3 +1,9 @@
+0.1.12 / 2013-10-16
+===================
+
+  * preact: added preact integration ([thefarside112](https://github.com/thefarside112))
+  * debug: renaming debug everywhere (calvinfo)
+
 0.1.11 / 2013-10-08
 ===================
 
