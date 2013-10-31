@@ -10,6 +10,7 @@ var firstId  = uid()
 
 
 exports.track = function (options) {
+  options = options || {};
   options = extend({
     userId     : firstId,
     event      : 'Baked a cake',
@@ -30,7 +31,7 @@ exports.track = function (options) {
     timestamp  : new Date(),
     options : {
       traits : {
-        email   : email,
+        email   : options.email || email,
         age     : 23,
         created : new Date(),
         bad     : null,
@@ -65,13 +66,14 @@ exports.track.bare = function (options) {
  */
 
 exports.identify = function (options) {
+  options = options || {};
   options = extend({
     userId : firstId,
     traits : {
       fat         : 0.02,
       firstName   : 'John',
       'Last Name' : 'Doe',
-      email       : email,
+      email       : options.email || email,
       company     : 'Segment.io',
       city        : 'San Francisco',
       state       : 'CA',
