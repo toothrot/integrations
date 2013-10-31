@@ -32,6 +32,7 @@ describe('Woopra', function () {
 
 
   describe('.track()', function () {
+    this.timeout(4000);
 
     it('should track successfully', function (done) {
       var track = helpers.track();
@@ -40,6 +41,7 @@ describe('Woopra', function () {
   });
 
   describe('.identify()', function () {
+    this.timeout(4000);
 
     it('should identify successfully', function (done) {
       var identify = helpers.identify();
