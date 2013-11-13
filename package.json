@@ -25,7 +25,8 @@
     "segmentio-integration": "0.1.0",
     "new-date": "0.2.0",
     "obj-case": "0.0.1",
-    "isostring": "0.0.1"
+    "isostring": "0.0.1",
+    "segmentio-facade": "~0.1.2"
   },
   "devDependencies": {
     "should": "~1.2.2",
