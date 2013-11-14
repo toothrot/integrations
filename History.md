@@ -1,3 +1,11 @@
+0.1.15 / 2013-11-13
+===================
+
+  * adding trak.io integration ([scootklein](https://github.com/scootklein))
+  * updating intercom to no longer use `custom_data` field
+  * updating package.json to use newer facade
+
+
 0.1.14 / 2013-10-31
 ===================
 
