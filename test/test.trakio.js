@@ -1,24 +1,16 @@
 
-var express      = require('express')
-  , facade       = require('segmentio-facade')
-  , helpers      = require('./helpers')
-  , integrations = require('..')
-  , should       = require('should')
-  , settings     = require('./auth.json')['Trak.io']
-  , tio          = new integrations['Trak.io']();
+var facade = require('segmentio-facade');
+var helpers = require('./helpers');
+var integrations = require('..');
+var should = require('should');
+var settings = require('./auth.json')['trak.io'];
+var tio = new integrations['trak.io']();
 
 
-var app = express().use(express.bodyParser())
-  , server;
-
-
-describe('Trak.io', function () {
-
-  before(function (done) { server = app.listen(4000, done); });
-  after(function(done) { server.close(done); });
+describe('trak.io', function () {
+  this.timeout(10000);
 
   describe('.enabled()', function () {
-
     it('should only be enabled for server side messages', function () {
       tio.enabled(new facade.Alias({ channel : 'server' })).should.be.ok;
       tio.enabled(new facade.Alias({ channel : 'client' })).should.not.be.ok;
@@ -26,9 +18,7 @@ describe('Trak.io', function () {
     });
   });
 
-
   describe('.validate()', function () {
-
     it('should require a token', function () {
       tio.validate({}, {}).should.be.an.instanceOf(Error);
       tio.validate({}, { token : ''}).should. be.an.instanceOf(Error);
@@ -39,9 +29,7 @@ describe('Trak.io', function () {
     });
   });
 
-
   describe('.track()', function () {
-
     it('should get a good response from the API', function (done) {
       var track = helpers.track();
       tio.track(track, settings, done);
@@ -58,7 +46,6 @@ describe('Trak.io', function () {
   });
 
   describe('.identify()', function () {
-
     it('should get a good response from the API', function (done) {
       var identify = helpers.identify();
       tio.identify(identify, settings, done);
@@ -73,7 +60,6 @@ describe('Trak.io', function () {
       });
     });
   });
-
 
   describe('.alias()', function () {
     it('should get a good response from the api', function (done) {
