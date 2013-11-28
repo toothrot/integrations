@@ -1,3 +1,10 @@
+0.1.17 / 2013-11-27
+===================
+
+  * webhooks: fixing test timeout
+  * helpscout: fixing single `websites` value
+  * hubspot: fixing boolean/string field errors
+
 0.1.16 / 2013-11-18
 ===================
 
