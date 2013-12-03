@@ -42,7 +42,7 @@ exports.track = function (options) {
           city : 'San Francisco'
         }
       },
-      ip : '12.212.12.49',
+      ip : '4.184.68.0',
       userAgent: 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)'
     }
   }, options);
