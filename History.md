@@ -1,3 +1,9 @@
+0.1.18 / 2013-12-02
+===================
+
+  * mixpanel: updating track calls to include correct ip information
+  * hubspot: adding fix for null values
+
 0.1.17 / 2013-11-27
 ===================
 
