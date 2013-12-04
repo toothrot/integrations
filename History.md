@@ -1,3 +1,10 @@
+0.1.19 / 2013-12-03
+===================
+
+  * hubspot: adding json-stringifying to object values
+  * hubspot: fixing existing contacts race condition
+
+
 0.1.18 / 2013-12-02
 ===================
 
