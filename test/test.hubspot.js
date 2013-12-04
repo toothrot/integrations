@@ -1,8 +1,10 @@
 var auth         = require('./auth')
   , facade       = require('segmentio-facade')
+  , format       = require('util').format
   , helpers      = require('./helpers')
   , integrations = require('..')
-  , should       = require('should');
+  , should       = require('should')
+  , uid          = require('uid');
 
 
 var hubspot  = new integrations['HubSpot']()
@@ -66,6 +68,19 @@ describe('HubSpot', function () {
 
     it('should identify a second time', function (done) {
       hubspot.identify(identify, settings, done);
+    });
+  });
+
+  describe('._create()', function () {
+    var email = format('test-%s@segment.io', uid());
+    var properties = [{ property: 'email', value: email }];
+
+    it('should be able to ._create() once', function (done) {
+      hubspot._create(properties, settings, done);
+    });
+
+    it('should be able to ._update() on the second call', function (done) {
+      hubspot._create(properties, settings, done);
     });
   });
 
