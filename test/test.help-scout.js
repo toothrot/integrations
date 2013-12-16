@@ -54,20 +54,16 @@ describe('Help Scout', function () {
 
     it('should be able to identify a new user', function (done) {
       this.timeout(4000);
-
-      helpscout.identify(identify, settings, function (err) {
-        should.not.exist(err);
-        helpscout._getUser(filter, settings, function (err, user) {
-          should.not.exist(err);
-          should.exist(user);
-          should.exist(user.id);
-          done();
-        });
+      helpscout.identify(identify, settings, function(err, res){
+        if (err) return done(err);
+        res.item.emails[0].value.should.eql(identify.email());
+        done();
       });
     });
 
     it('should be able to identify an existing user', function (done) {
       this.timeout(4000);
+      var identify = helpers.identify({ email: 'calvin@segment.io' });
       helpscout.identify(identify, settings, done);
     });
   });
@@ -103,8 +99,8 @@ describe('Help Scout', function () {
     });
 
     it('should return an existing user', function (done) {
-      var identify = helpers.identify()
-        , email    = identify.email();
+      var identify = helpers.identify({ email: 'calvin@segment.io' })
+      var email = identify.email();
       helpscout._getUser({ email : email }, settings, function (err, user) {
         should.not.exist(err);
         should.exist(user);
