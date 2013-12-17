@@ -8,8 +8,6 @@ var tio = new integrations['trak.io']();
 
 
 describe('trak.io', function () {
-  this.timeout(10000);
-
   describe('.enabled()', function () {
     it('should only be enabled for server side messages', function () {
       tio.enabled(new facade.Alias({ channel : 'server' })).should.be.ok;

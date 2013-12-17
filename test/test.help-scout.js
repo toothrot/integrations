@@ -53,7 +53,6 @@ describe('Help Scout', function () {
       , filter   = { email : identify.email() };
 
     it('should be able to identify a new user', function (done) {
-      this.timeout(4000);
       helpscout.identify(identify, settings, function(err, res){
         if (err) return done(err);
         res.item.emails[0].value.should.eql(identify.email());
@@ -62,7 +61,6 @@ describe('Help Scout', function () {
     });
 
     it('should be able to identify an existing user', function (done) {
-      this.timeout(4000);
       var identify = helpers.identify({ email: 'calvin@segment.io' });
       helpscout.identify(identify, settings, done);
     });

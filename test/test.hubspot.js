@@ -59,7 +59,6 @@ describe('HubSpot', function () {
 
 
   describe('.identify()', function () {
-    this.timeout(5000);
     var identify = helpers.identify();
 
     it('should identify successfully', function (done) {
