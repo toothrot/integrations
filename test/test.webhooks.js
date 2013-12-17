@@ -83,8 +83,6 @@ function testApiCall (call) {
     });
 
     it('should not succeed on an error', function (done) {
-      this.timeout(15000); // TODO: remove
-
       var route    = '/' + call + '/error'
         , settings = { globalHook : 'http://localhost:4000' + route }
         , status   = 503;

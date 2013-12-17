@@ -61,7 +61,6 @@ describe('Intercom', function () {
 
   describe('.identify()', function () {
     var identify = helpers.identify();
-    this.timeout(10000);
     it('should be able to identify correctly', function (done) {
       intercom.identify(identify, settings, function (err) {
         should.not.exist(err);
@@ -72,7 +71,6 @@ describe('Intercom', function () {
 
   describe('.track()', function () {
     var track = helpers.track();
-    this.timeout(10000);
     it('should do nothing', function (done) {
       intercom.track(track, settings, done);
     });

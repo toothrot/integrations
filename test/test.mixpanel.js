@@ -47,8 +47,6 @@ describe('Mixpanel', function () {
 
 
   describe('.track()', function () {
-    this.timeout(5000);
-
     it('should be able to track correctly', function (done) {
       mixpanel.track(helpers.track(), settings, done);
     });
