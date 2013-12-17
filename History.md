@@ -1,3 +1,10 @@
+0.1.20 / 2013-12-16
+===================
+
+  * helpscout: fixed tests (yields)
+  * customer.io: removing sessionid (reinpk)
+  * preact: relaxing `email` requirement to send data
+
 0.1.19 / 2013-12-03
 ===================
 
