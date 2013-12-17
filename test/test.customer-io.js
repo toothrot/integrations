@@ -20,9 +20,24 @@ describe('Customer.io', function () {
   describe('.enabled()', function () {
 
     it('should only be enabled for server side messages', function () {
-      cio.enabled(new facade.Alias({ channel : 'server' })).should.be.ok;
+      cio.enabled(new facade.Track({
+        channel: 'server',
+        userId: 'userId'
+      })).should.be.ok;
       cio.enabled(new facade.Alias({ channel : 'client' })).should.not.be.ok;
       cio.enabled(new facade.Alias({})).should.not.be.ok;
+    });
+
+    it('should only be enabled for messages with `userId`', function () {
+      cio.enabled(new facade.Track({
+        sessionId: 'session',
+        channel: 'server'
+      })).should.not.be.ok;
+
+      cio.enabled(new facade.Track({
+        userId: 'userId',
+        channel: 'server'
+      })).should.be.ok;
     });
   });
 
