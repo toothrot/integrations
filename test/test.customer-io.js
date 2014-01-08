@@ -94,6 +94,22 @@ describe('Customer.io', function () {
     });
   });
 
+  describe('._visit()', function(){
+    it('should not send the request if active is false', function(done){
+      var track = helpers.track();
+      track.obj.options.active = false;
+      cio._visit(track, settings, function(){
+        arguments.length.should.eql(0);
+        done();
+      });
+    })
+
+    it('should send the request if active is true', function(done){
+      var track = helpers.track(); // true by default.
+      cio._visit(track, settings, done);
+    })
+  })
+
 
   describe('.alias()', function () {
 
