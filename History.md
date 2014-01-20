@@ -1,5 +1,10 @@
+0.1.22 / 2014-01-20
+===================
+
+  * intercom: fix for traits.companies when sent as a non-array
+
 0.1.21 / 2014-01-15
-====================
+===================
 
   * customer.io: adding last visit updates
 
