@@ -60,8 +60,16 @@ describe('Intercom', function () {
   });
 
   describe('.identify()', function () {
-    var identify = helpers.identify();
     it('should be able to identify correctly', function (done) {
+      var identify = helpers.identify();
+      intercom.identify(identify, settings, function (err) {
+        should.not.exist(err);
+        done();
+      });
+    });
+
+    it('should not error on invalid companies', function (done) {
+      var identify = helpers.identify({ traits: { companies: 'foo' }});
       intercom.identify(identify, settings, function (err) {
         should.not.exist(err);
         done();
