@@ -12,7 +12,7 @@
     "test": "mocha --reporter spec"
   },
   "dependencies": {
-    "request-retry": "0.0.1",
+    "request-retry": "0.1.1",
     "is": "~0.2.6",
     "clone": "~0.1.9",
     "string-hash": "~1.1.0",
