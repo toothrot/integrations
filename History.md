@@ -1,3 +1,12 @@
+
+0.1.23 / 2014-02-10
+==================
+
+ * updating to request-retry 0.1.1
+ * Merge pull request #30 from segmentio/mailchimp
+ * adding support for traits to send as merge vars
+ * adding mailchimp integration, fixes #29
+
 0.1.22 / 2014-01-20
 ===================
 
