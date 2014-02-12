@@ -1,4 +1,10 @@
 
+0.1.24 / 2014-02-11 
+==================
+
+ * adding valid-querystring checks
+ * revert `request-retry` upgrade
+
 0.1.23 / 2014-02-10
 ==================
 
