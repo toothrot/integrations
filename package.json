@@ -28,7 +28,8 @@
     "isostring": "0.0.1",
     "segmentio-facade": "~0.1.2",
     "convert-dates": "~0.1.0",
-    "isodate-traverse": "~0.1.0"
+    "isodate-traverse": "~0.1.0",
+    "valid-querystring": "~1.0.0"
   },
   "devDependencies": {
     "should": "~1.2.2",
