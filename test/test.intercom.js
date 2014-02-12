@@ -79,8 +79,11 @@ describe('Intercom', function () {
 
   describe('.track()', function () {
     var track = helpers.track();
-    it('should do nothing', function (done) {
-      intercom.track(track, settings, done);
+    it('should track', function (done) {
+      intercom.track(track, settings, function(err){
+        if (err) return done(err);
+        done();
+      });
     });
   });
 

@@ -1,5 +1,15 @@
 
-0.1.25 / 2014-02-11 
+0.1.27 / 2014-02-18
+==================
+
+ * mailchimp: fix for messages which have no email field
+
+0.1.26 / 2014-02-17
+==================
+
+ * add intercom track
+
+0.1.25 / 2014-02-11
 ==================
 
  * updating segmentio-facade as a dev-dep
@@ -7,7 +17,7 @@
  * removing facade from deps
  * updating `isodate-traverse` #0.3.0
 
-0.1.24 / 2014-02-11 
+0.1.24 / 2014-02-11
 ==================
 
  * adding valid-querystring checks
