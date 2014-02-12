@@ -1,4 +1,12 @@
 
+0.1.25 / 2014-02-11 
+==================
+
+ * updating segmentio-facade as a dev-dep
+ * intercom: dates fix
+ * removing facade from deps
+ * updating `isodate-traverse` #0.3.0
+
 0.1.24 / 2014-02-11 
 ==================
 
