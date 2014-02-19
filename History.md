@@ -1,4 +1,9 @@
 
+0.1.27 / 2014-02-18
+==================
+
+ * mailchimp: fix for messages which have no email field
+
 0.1.26 / 2014-02-17
 ==================
 
