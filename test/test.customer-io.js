@@ -14,9 +14,6 @@ var app = express().use(express.bodyParser())
 
 describe('Customer.io', function () {
 
-  before(function (done) { server = app.listen(4000, done); });
-  after(function(done) { server.close(done); });
-
   describe('.enabled()', function () {
 
     it('should only be enabled for server side messages', function () {
@@ -93,6 +90,14 @@ describe('Customer.io', function () {
       });
     });
   });
+
+
+  describe('.group()', function(){
+    it('should get a good response from the API', function(done){
+      var group = helpers.group();
+      cio.group(group, settings, done);
+    })
+  })
 
   describe('._visit()', function(){
     it('should not send the request if active is false', function(done){

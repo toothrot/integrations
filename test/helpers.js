@@ -6,6 +6,7 @@ var facade = require('segmentio-facade')
 
 var firstId  = uid()
   , secondId = uid()
+  , groupId  = uid()
   , email    = 'testing-' + firstId + '@segment.io';
 
 
@@ -97,6 +98,48 @@ exports.identify = function (options) {
     channel : 'server'
   }, options);
   return new facade.Identify(options);
+};
+
+/**
+ * Page
+ */
+
+exports.page = function(options){
+  return new facade.Page(extend({
+    userId: firstId,
+    properties: {
+      url: 'https://segment.io/docs',
+      title: 'Analytics.js - Segment.io'
+    },
+    context: {
+      ip: '12.212.12.49'
+    },
+    timestamp: new Date,
+    channel: 'server'
+  }, options || {}));
+};
+
+/**
+ * Group
+ */
+
+exports.group = function(options){
+  return new facade.Group(extend({
+    groupId: groupId,
+    userId: firstId,
+    traits: {
+      email: email,
+      company: 'Segment.io',
+      state: 'CA',
+      city: 'San Francisco',
+      created: new Date('2/1/2014')
+    },
+    context: {
+      ip: '12.212.12.49'
+    },
+    timestamp: new Date,
+    channel: 'server'
+  }, options || {}));
 };
 
 
