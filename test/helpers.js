@@ -129,10 +129,11 @@ exports.group = function(options){
     userId: firstId,
     traits: {
       email: email,
-      company: 'Segment.io',
+      name: 'Segment.io',
       state: 'CA',
       city: 'San Francisco',
-      created: new Date('2/1/2014')
+      created: new Date('2/1/2014'),
+      plan: 'Enterprise',
     },
     context: {
       ip: '12.212.12.49'

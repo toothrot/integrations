@@ -77,6 +77,13 @@ describe('Intercom', function () {
     });
   });
 
+  describe('.group()', function(){
+    it('should be able to group correctly', function(done){
+      var group = helpers.group();
+      intercom.group(group, settings, done);
+    })
+  })
+
   describe('.track()', function () {
     var track = helpers.track();
     it('should track', function (done) {
