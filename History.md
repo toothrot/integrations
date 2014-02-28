@@ -1,4 +1,12 @@
 
+0.1.28 / 2014-02-27
+==================
+
+ * commandiq: adding commandiq
+ * intercom: add group()
+ * ga: add page()
+ * customer.io: add group()
+
 0.1.27 / 2014-02-18
 ==================
 
