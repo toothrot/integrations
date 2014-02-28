@@ -1,6 +1,5 @@
 
-var express      = require('express')
-  , facade       = require('segmentio-facade')
+var facade       = require('segmentio-facade')
   , helpers      = require('./helpers')
   , integrations = require('..')
   , should       = require('should')
@@ -8,20 +7,13 @@ var express      = require('express')
   , ciq          = new integrations['CommandIQ']();
 
 
-var app = express().use(express.bodyParser())
-  , server;
-
 describe('CommandIQ', function () {
 
-  before(function (done) { server = app.listen(4000, done); });
-  after(function(done) { server.close(done); });
-
   describe('.enabled()', function () {
-  	// Note: Why only server-side?
-    it('should only be enabled for server side messages', function () {
+    it('should only be enabled for all messages', function () {
       ciq.enabled(new facade.Alias({ channel : 'server' })).should.be.ok;
-      ciq.enabled(new facade.Alias({ channel : 'client' })).should.not.be.ok; 
-      ciq.enabled(new facade.Alias({})).should.not.be.ok;
+      ciq.enabled(new facade.Alias({ channel : 'client' })).should.be.ok;
+      ciq.enabled(new facade.Alias({})).should.be.ok;
     });
   });
 
