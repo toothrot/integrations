@@ -42,7 +42,6 @@ describe('Google Analytics', function () {
       })
     })
 
-
     describe('.identify()', function () {
       it('should do nothing', function (done) {
         ga.identify({}, settings, function (err) {
@@ -101,6 +100,12 @@ describe('Google Analytics', function () {
       });
     });
 
+    describe('.page()', function(){
+      it('should get a good response from the API', function(done){
+        var page = helpers.page();
+        ga.page(page, settings, done);
+      })
+    })
 
     describe('.alias()', function () {
       it('should do nothing', function (done) {

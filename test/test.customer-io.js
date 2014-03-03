@@ -15,7 +15,6 @@ var app = express().use(express.bodyParser())
 describe('Customer.io', function () {
 
   describe('.enabled()', function () {
-
     it('should only be enabled for server side messages', function () {
       cio.enabled(new facade.Track({
         channel: 'server',
@@ -40,7 +39,6 @@ describe('Customer.io', function () {
 
 
   describe('.validate()', function () {
-
     it('should require an apiKey', function () {
       cio.validate({}, { siteId : 'xxx' }).should.be.an.instanceOf(Error);
       cio.validate({}, { siteId : 'xxx', apiKey : '' }).should.be.an.instanceOf(Error);
@@ -58,7 +56,6 @@ describe('Customer.io', function () {
 
 
   describe('.track()', function () {
-
     it('should get a good response from the API', function (done) {
       var track = helpers.track();
       cio.track(track, settings, done);
@@ -75,7 +72,6 @@ describe('Customer.io', function () {
   });
 
   describe('.identify()', function () {
-
     it('should get a good response from the API', function (done) {
       var identify = helpers.identify();
       cio.identify(identify, settings, done);
@@ -99,11 +95,11 @@ describe('Customer.io', function () {
     })
   })
 
-  describe('._visit()', function(){
+  describe('.visit()', function(){
     it('should not send the request if active is false', function(done){
       var track = helpers.track();
       track.obj.options.active = false;
-      cio._visit(track, settings, function(){
+      cio.visit(track, settings, function(){
         arguments.length.should.eql(0);
         done();
       });
@@ -111,13 +107,12 @@ describe('Customer.io', function () {
 
     it('should send the request if active is true', function(done){
       var track = helpers.track(); // true by default.
-      cio._visit(track, settings, done);
+      cio.visit(track, settings, done);
     })
   })
 
 
   describe('.alias()', function () {
-
     it('should do nothing', function (done) {
       cio.alias({}, {}, function (err) {
         should.not.exist(err);

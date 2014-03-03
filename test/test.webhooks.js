@@ -47,7 +47,7 @@ describe('Webhooks', function () {
   /**
    * Test that our api calls forward properly
    */
-  ['track', 'identify', 'alias'].forEach(testApiCall);
+  ['track', 'identify', 'alias', 'group', 'page'].forEach(testApiCall);
 
 });
 
