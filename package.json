@@ -12,30 +12,24 @@
     "test": "mocha --reporter spec"
   },
   "dependencies": {
-    "request-retry": "0.0.1",
     "is": "~0.2.6",
-    "clone": "~0.1.9",
     "string-hash": "~1.1.0",
     "ms": "~0.6.1",
     "batch": "~0.4.0",
-    "debug": "~0.7.2",
     "extend": "~1.1.3",
     "lru-cache": "~2.3.0",
     "unix-time": "~1.0.1",
     "segmentio-integration": "~1.0.0",
     "segmentio-facade": "~0.2.10",
-    "new-date": "0.2.0",
     "obj-case": "0.0.1",
     "isostring": "0.0.1",
     "convert-dates": "~0.1.0",
-    "isodate-traverse": "~0.3.0",
-    "valid-querystring": "~1.0.0"
+    "isodate-traverse": "~0.3.0"
   },
   "devDependencies": {
     "should": "~1.2.2",
     "mocha": "*",
     "express": "~3.2.6",
-    "supertest": "~0.7.0",
     "uid": "0.0.2"
   }
 }
