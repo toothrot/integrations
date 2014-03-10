@@ -10,19 +10,21 @@ var iterable     = new integrations['Iterable']()
 
 
 describe('Iterable', function () {
-
   describe('.enabled()', function () {
+    it('should only be enabled for all messages with email', function () {
+      iterable.enabled(new facade.Track({
+        userId: 'test@segment.io',
+        channel: 'client'
+      })).should.be.ok;
 
-    it('should only be enabled for server side messages', function () {
-      iterable.enabled(new facade.Track({ channel : 'server' })).should.be.ok;
-      iterable.enabled(new facade.Track({ channel : 'client' })).should.not.be.ok;
-      iterable.enabled(new facade.Track({})).should.not.be.ok;
+      iterable.enabled(new facade.Track({
+        userId: 'sss',
+        channel: 'client'
+      })).should.not.be.ok;
     });
   });
 
-
   describe('.validate()', function () {
-
     it('should require an apiKey', function () {
       iterable.validate({}, { apiKey : '' }).should.be.an.instanceOf(Error);
       iterable.validate({}, {}).should.be.an.instanceOf(Error);
@@ -30,9 +32,7 @@ describe('Iterable', function () {
     });
   });
 
-
   describe('.track()', function () {
-
     it('should get a good response from the API', function (done) {
       var track = helpers.track();
       iterable.track(track, settings, done);
@@ -40,13 +40,11 @@ describe('Iterable', function () {
   });
 
   describe('.identify()', function () {
-
     it('should get a good response from the API', function (done) {
       var identify = helpers.identify();
       iterable.identify(identify, settings, done);
     });
   });
-
 
   describe('.alias()', function () {
     it('should do nothing', function (done) {
