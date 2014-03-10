@@ -1,4 +1,11 @@
 
+1.1.0 / 2014-03-10
+==================
+
+ * fix user-agent to match new facade
+ * remove some deps
+ * adding iterable integration ([hjz](https://github.com/hjz))
+
 1.0.0 / 2014-03-06
 ==================
 
