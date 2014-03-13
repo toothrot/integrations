@@ -1,4 +1,10 @@
 
+1.1.4 / 2014-03-13
+==================
+
+ * intercom: fix for dates
+ * adding fix for customer.io group
+
 1.1.3 / 2014-03-13
 ==================
 
