@@ -1,4 +1,10 @@
 
+1.1.5 / 2014-03-13
+==================
+
+ * add jscoverage, closes #44
+ * kissmetrics: send revenue as billing amount
+
 1.1.4 / 2014-03-13
 ==================
 
