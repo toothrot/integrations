@@ -39,10 +39,28 @@ describe('StackLead', function () {
     });
   });
 
+  describe('.validate()', function () {
+    it('should validate deliver_method if set', function () {
+      stacklead.validate({}, { apiKey : 'xxx', delivery_method: 'bad' }).should.be.an.instanceOf(Error);
+      stacklead.validate({}, { apiKey : '', delivery_method: 'email' }).should.be.an.instanceOf(Error);
+      should.not.exist(stacklead.validate({}, { apiKey : 'xxx', delivery_method: 'email' }));
+      should.not.exist(stacklead.validate({}, { apiKey : 'xxx', delivery_method: 'webhook' }));
+    });
+  });
+
   describe('.identify()', function () {
     it('should identify successfully', function (done) {
       var identify = helpers.identify();
       stacklead.identify(identify, settings, done);
+    });
+  });
+
+  describe('.identify()', function () {
+    it('should identify successfully with webhook', function (done) {
+      var newSettings = Object.create(settings);
+      newSettings.delivery_method = 'webhook';
+      var identify = helpers.identify();
+      stacklead.identify(identify, newSettings, done);
     });
   });
 
