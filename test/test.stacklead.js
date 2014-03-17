@@ -51,8 +51,8 @@ describe('StackLead', function () {
   describe('.validate()', function () {
     it('should validate duplicates if set', function () {
       stacklead.validate({}, { apiKey : 'xxx', duplicates: 'bad' }).should.be.an.instanceOf(Error);
-      stacklead.validate({}, { apiKey : '', duplicates: 'false' }).should.be.an.instanceOf(Error);
-      should.not.exist(stacklead.validate({}, { apiKey : 'xxx', duplicates: 'false' }));
+      stacklead.validate({}, { apiKey : '', duplicates: 'true' }).should.be.an.instanceOf(Error);
+      should.not.exist(stacklead.validate({}, { apiKey : 'xxx', duplicates: 'true' }));
     });
   });
 
