@@ -48,6 +48,14 @@ describe('StackLead', function () {
     });
   });
 
+  describe('.validate()', function () {
+    it('should validate duplicates if set', function () {
+      stacklead.validate({}, { apiKey : 'xxx', duplicates: 'bad' }).should.be.an.instanceOf(Error);
+      stacklead.validate({}, { apiKey : '', duplicates: 'false' }).should.be.an.instanceOf(Error);
+      should.not.exist(stacklead.validate({}, { apiKey : 'xxx', duplicates: 'false' }));
+    });
+  });
+
   describe('.identify()', function () {
     it('should identify successfully', function (done) {
       var identify = helpers.identify();
