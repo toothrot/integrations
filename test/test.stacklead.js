@@ -1,4 +1,5 @@
 var auth         = require('./auth')
+  , extend       = require('extend')
   , facade       = require('segmentio-facade')
   , helpers      = require('./helpers')
   , integrations = require('..')
@@ -37,22 +38,12 @@ describe('StackLead', function () {
       stacklead.validate({}, {}).should.be.an.instanceOf(Error);
       should.not.exist(stacklead.validate({}, { apiKey : 'xxx' }));
     });
-  });
 
-  describe('.validate()', function () {
     it('should validate deliver_method if set', function () {
-      stacklead.validate({}, { apiKey : 'xxx', delivery_method: 'bad' }).should.be.an.instanceOf(Error);
-      stacklead.validate({}, { apiKey : '', delivery_method: 'email' }).should.be.an.instanceOf(Error);
-      should.not.exist(stacklead.validate({}, { apiKey : 'xxx', delivery_method: 'email' }));
-      should.not.exist(stacklead.validate({}, { apiKey : 'xxx', delivery_method: 'webhook' }));
-    });
-  });
-
-  describe('.validate()', function () {
-    it('should validate duplicates if set', function () {
-      stacklead.validate({}, { apiKey : 'xxx', duplicates: 'bad' }).should.be.an.instanceOf(Error);
-      stacklead.validate({}, { apiKey : '', duplicates: 'true' }).should.be.an.instanceOf(Error);
-      should.not.exist(stacklead.validate({}, { apiKey : 'xxx', duplicates: 'true' }));
+      stacklead.validate({}, { apiKey : 'xxx', deliveryMethod: 'bad' }).should.be.an.instanceOf(Error);
+      stacklead.validate({}, { apiKey : '', deliveryMethod: 'email' }).should.be.an.instanceOf(Error);
+      should.not.exist(stacklead.validate({}, { apiKey : 'xxx', deliveryMethod: 'email' }));
+      should.not.exist(stacklead.validate({}, { apiKey : 'xxx', deliveryMethod: 'webhook' }));
     });
   });
 
@@ -61,14 +52,11 @@ describe('StackLead', function () {
       var identify = helpers.identify();
       stacklead.identify(identify, settings, done);
     });
-  });
 
-  describe('.identify()', function () {
     it('should identify successfully with webhook', function (done) {
-      var newSettings = Object.create(settings);
-      newSettings.delivery_method = 'webhook';
+      var webhook = extend({}, settings, { deliveryMethod: 'webhook' });
       var identify = helpers.identify();
-      stacklead.identify(identify, newSettings, done);
+      stacklead.identify(identify, webhook, done);
     });
   });
 
@@ -92,5 +80,4 @@ describe('StackLead', function () {
       stacklead.page(page, settings, done);
     });
   });
-
 });
