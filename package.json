@@ -1,6 +1,6 @@
 {
   "name": "segmentio-integrations",
-  "version": "1.1.8",
+  "version": "1.1.9",
   "description": "Segment.io server-side integrations",
   "author": "Segment.io <friends@segment.io>",
   "engines": {
@@ -21,7 +21,7 @@
     "unix-time": "~1.0.1",
     "segmentio-integration": "~1.0.0",
     "ua-parser-js": "0.6.X",
-    "segmentio-facade": "~0.2.12",
+    "segmentio-facade": "~0.3.0",
     "obj-case": "0.0.1",
     "isostring": "0.0.1",
     "convert-dates": "~0.1.0",
