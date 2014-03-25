@@ -14,13 +14,9 @@ describe('Vero', function () {
   describe('.enabled()', function () {
 
     it('should only be enabled for server side messages', function () {
-      vero.enabled(new facade.Track({ channel : 'server', userId: 'id' })).should.be.ok;
+      vero.enabled(new facade.Track({ channel : 'server' })).should.be.ok;
       vero.enabled(new facade.Track({ channel : 'client' })).should.not.be.ok;
       vero.enabled(new facade.Track({})).should.not.be.ok;
-    });
-
-    it('should not be enabled for idless messages', function(){
-      vero.enabled(new facade.Track({ channel: 'server' })).should.not.be.ok;
     })
   });
 
@@ -53,7 +49,7 @@ describe('Vero', function () {
 
 
   describe('.alias()', function () {
-    it('should do nothing', function (done) {
+    it('should alias correctly', function (done) {
       var alias = helpers.alias();
       vero.alias(alias, settings, done);
     });
