@@ -1,4 +1,10 @@
 
+1.1.11 / 2014-03-24
+==================
+
+ * webhooks: lowering timeout and retries
+ * updating gitignore
+
 1.1.10 / 2014-03-20
 ==================
 
