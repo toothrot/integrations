@@ -101,6 +101,18 @@ function testApiCall (call) {
         done();
       });
     });
+
+    it('should timeout', function(done){
+      var route = '/' + call + '/timeout';
+      var settings = { globalHook: 'http://localhost:4000' + route };
+
+      app.post(route, function (req, res, next) {});
+
+      webhook[call](message, settings, function (err) {
+        should.exist(err.timeout);
+        done();
+      });
+    });
   });
 }
 
