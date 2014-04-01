@@ -1,4 +1,11 @@
 
+1.1.12 / 2014-04-01
+==================
+
+ * bumping segmentio-integration for timeout fixes
+ * vero: add .alias()
+ * add churnbee
+
 1.1.11 / 2014-03-24
 ==================
 
