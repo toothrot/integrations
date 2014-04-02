@@ -1,7 +1,9 @@
 
 var integration = require('segmentio-integration');
 var ValidationError = integration.errors.Validation;
-var Track = require('segmentio-facade').Track;
+var facade = require('segmentio-facade');
+var Track = facade.Track;
+var Identify = facade.Identify;
 var settings = require('./auth').ChurnBee;
 var helpers = require('./helpers');
 var integrations = require('..');
@@ -36,6 +38,13 @@ describe('ChurnBee', function(){
         channel: 'server'
       })).should.not.be.ok;
     })
+
+    it('should not be enabled if .event() does not exist', function(){
+      churnbee.enabled(new Identify({
+        channel: 'server',
+        userId: 'userId',
+      })).should.not.be.ok;
+    });
   })
 
   describe('.validate()', function(){
