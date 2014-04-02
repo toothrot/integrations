@@ -1,4 +1,9 @@
 
+1.1.13 / 2014-04-01
+==================
+
+ * churnbee: should only be enabled for messages with .event()
+
 1.1.12 / 2014-04-01
 ==================
 
