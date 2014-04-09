@@ -1,4 +1,11 @@
 
+1.1.15 / 2014-04-09
+==================
+
+ * fix for google analytics universal client id
+ * add drip
+ * vero: ignore idless requests
+
 1.1.14 / 2014-04-04
 ==================
 
