@@ -1,3 +1,5 @@
+.idea/
+env/
 node_modules/
 test/auth.json
 *.DS_Store

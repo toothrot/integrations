@@ -25,7 +25,8 @@
     "obj-case": "0.0.1",
     "isostring": "0.0.1",
     "convert-dates": "~0.1.0",
-    "isodate-traverse": "~0.3.0"
+    "isodate-traverse": "~0.3.0",
+    "flat": "~1.2.0"
   },
   "devDependencies": {
     "should": "~1.2.2",
