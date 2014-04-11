@@ -13,10 +13,15 @@ describe('Google Analytics', function () {
 
     describe('.enabled()', function () {
       it('should only be enabled for server side messages', function () {
-        ga.enabled(new facade.Track({ channel : 'server' })).should.be.ok;
-        ga.enabled(new facade.Track({ channel : 'client' })).should.not.be.ok;
-        ga.enabled(new facade.Track({})).should.not.be.ok;
+        ga.enabled(new facade.Track({ channel : 'server' }), settings).should.be.ok;
+        ga.enabled(new facade.Track({ channel : 'client' }), settings).should.not.be.ok;
+        ga.enabled(new facade.Track({}), {}).should.not.be.ok;
       });
+
+      it('should only be enabled for settings with .serversideTrackingId', function(){
+        ga.enabled(new facade.Track({ channel : 'server' }), settings).should.be.ok;
+        ga.enabled(new facade.Track({ channel : 'server' }), {}).should.not.be.ok;
+      })
     });
 
     describe('.validate()', function () {
@@ -68,10 +73,15 @@ describe('Google Analytics', function () {
 
     describe('.enabled()', function () {
       it('should only be enabled for server side messages', function () {
-        ga.enabled(new facade.Track({ channel : 'server' })).should.be.ok;
-        ga.enabled(new facade.Track({ channel : 'client' })).should.not.be.ok;
-        ga.enabled(new facade.Track({})).should.not.be.ok;
+        ga.enabled(new facade.Track({ channel : 'server' }), settings).should.be.ok;
+        ga.enabled(new facade.Track({ channel : 'client' }), settings).should.not.be.ok;
+        ga.enabled(new facade.Track({}), {}).should.not.be.ok;
       });
+
+      it('should only be enabled for settings with .serversideTrackingId', function(){
+        ga.enabled(new facade.Track({ channel : 'server' }), settings).should.be.ok;
+        ga.enabled(new facade.Track({ channel : 'server' }), {}).should.not.be.ok;
+      })
     });
 
     describe('.validate()', function () {
