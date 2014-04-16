@@ -8,8 +8,15 @@ var auth         = require('./auth')
 var frontleaf = new integrations['Frontleaf']()
   , settings = auth['Frontleaf'];
 
+var testEndpoint = frontleaf.endpoint = 'https://demo.frontleaf.com/api/track';
 
 describe('Frontleaf', function () {
+
+  describe('env', function () {
+    it('should point to our test system', function() {
+      should.equal(frontleaf.endpoint, testEndpoint);
+    });
+  });
 
   describe('.enabled()', function () {
     it('should only be enabled for server side messages', function () {
@@ -73,6 +80,35 @@ describe('Frontleaf', function () {
         should.not.exist(err);
         done();
       });
+    });
+  });
+
+  describe('._clean()', function () {
+    it('should properly clean and flatten the source data', function (done) {
+      var result = frontleaf.mapper._clean({
+        id : 123456,
+        name : "Delete Me",
+        layers  : ['chocolate', 'strawberry', 'fudge'],
+        revenue : 19.95,
+        numLayers : 10,
+        whoCares: null,
+        fat : 0.02,
+        bacon : '1',
+        date : (new Date()).toISOString(),
+        address : {
+          state : 'CA',
+          zip  : 94107,
+          city : 'San Francisco'
+        }
+      })
+
+      result.should.not.have.property('id');
+      result.should.not.have.property('name');
+      result.should.not.have.property('whoCares');
+      result.should.have.property('address state', 'CA');
+      result.should.have.property('layers', 'chocolate,strawberry,fudge');
+
+      done();
     });
   });
 });
