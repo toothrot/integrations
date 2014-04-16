@@ -1,4 +1,11 @@
 
+1.1.17 / 2014-04-15
+==================
+
+ * ga-universal: add .ip and .userAgent override
+ * ga: move settings check to enabled
+ * hubspot: replace spaces in properties with underscores
+
 1.1.16 / 2014-04-09
 ==================
 
