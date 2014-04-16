@@ -1,4 +1,23 @@
 
+1.1.17 / 2014-04-15
+==================
+
+ * ga-universal: add .ip and .userAgent override
+ * ga: move settings check to enabled
+ * hubspot: replace spaces in properties with underscores
+
+1.1.16 / 2014-04-09
+==================
+
+ * Amplitude segment.io integration.
+
+1.1.15 / 2014-04-09
+==================
+
+ * fix for google analytics universal client id
+ * add drip
+ * vero: ignore idless requests
+
 1.1.14 / 2014-04-04
 ==================
 
