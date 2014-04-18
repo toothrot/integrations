@@ -55,6 +55,14 @@ describe('Mixpanel', function () {
       mixpanel.track(helpers.track.bare(), settings, done);
     });
 
+    it('should increment', function(done){
+      var opts = {};
+      for (var k in settings) opts[k] = settings[k];
+      var track = helpers.track();
+      opts.increments = [track.event()];
+      mixpanel.track(track, opts, done);
+    })
+
     it('should be able to track ill-formed traits', function (done) {
       mixpanel.track(helpers.track.bare({
         context : {
