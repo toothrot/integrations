@@ -1,4 +1,11 @@
 
+1.1.19 / 2014-04-22
+==================
+
+ * intercom: only update impressions on .active()
+ * add mixpanel increments, closes #78
+ * update intercom events, closes #80
+
 1.1.18 / 2014-04-17
 ==================
 
