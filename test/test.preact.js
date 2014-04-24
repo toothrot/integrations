@@ -43,14 +43,14 @@ describe('Preact', function () {
 
 
   describe('.validate()', function () {
-    it('should require an apiSecret', function () {
-      preact.validate({}, { projectCode : 'xxx' }).should.be.an.instanceOf(Error);
-      preact.validate({}, { projectCode : 'xxx', apiSecret : '' }).should.be.an.instanceOf(Error);
+    it('should require a projectCode', function () {
+      preact.validate({}, { projectCode : '' }).should.be.an.instanceOf(Error);
+      preact.validate({}, { projectCode : '', apiSecret : 'xxx' }).should.be.an.instanceOf(Error);
     });
 
-    it('should require a siteId', function () {
-      preact.validate({}, { apiSecret : 'xxx' }).should.be.an.instanceOf(Error);
-      preact.validate({}, { projectCode : '', apiSecret : 'xxx' }).should.be.an.instanceOf(Error);
+    it('should require an apiSecret', function () {
+      preact.validate({}, { apiSecret : '' }).should.be.an.instanceOf(Error);
+      preact.validate({}, { apiSecret : '', projectCode : 'xxx' }).should.be.an.instanceOf(Error);
     });
 
     it('should validate with the required settings', function () {
@@ -66,10 +66,9 @@ describe('Preact', function () {
     });
   });
 
-
   describe('.identify()', function () {
-    it('should do nothing', function (done) {
-      var identify = helpers.identify();
+    var identify = helpers.identify();
+    it('should be able to identify correctly', function (done) {
       preact.identify(identify, settings, done);
     });
   });
