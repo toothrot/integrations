@@ -68,6 +68,16 @@ describe('HubSpot', function () {
     it('should identify a second time', function (done) {
       hubspot.identify(identify, settings, done);
     });
+
+    it('should identify with "date" objects', function (done) {
+      // the hubspot demo key has this as the only "date" type
+      var identify = helpers.identify({
+        traits: {
+          offerextractdate: new Date()
+        }
+      });
+      hubspot.identify(identify, settings, done);
+    });
   });
 
   describe('._create()', function () {

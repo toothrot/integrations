@@ -1,18 +1,27 @@
 
-var facade = require('segmentio-facade')
-  , extend = require('extend')
-  , uid    = require('uid');
+var facade = require('segmentio-facade');
+var merge = require('merge-util');
+var uid = require('uid');
 
+/**
+ * Create our testing variables
+ */
 
-var firstId  = uid()
-  , secondId = uid()
-  , groupId  = uid()
-  , email    = 'testing-' + firstId + '@segment.io';
+var firstId  = uid();
+var secondId = uid();
+var groupId  = uid();
+var email = 'testing-' + firstId + '@segment.io';
 
+/**
+ * Create a track call merged from `options`
+ *
+ * @param {Object} options
+ * @return {Track}
+ */
 
 exports.track = function (options) {
   options = options || {};
-  options = extend({
+  return new facade.Track(merge({
     userId     : firstId,
     event      : 'Baked a cake',
     properties : {
@@ -46,29 +55,35 @@ exports.track = function (options) {
       ip : '4.184.68.0',
       userAgent: 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)'
     }
-  }, options);
-  return new facade.Track(options);
+  }, options));
 };
+
+/**
+ * Create a bare track call merged from `options`
+ *
+ * @param {Object} options
+ * @return {Track}
+ */
 
 
 exports.track.bare = function (options) {
-  options = extend({
+  return new facade.Track(merge({
     userId  : 'aaa',
     event   : 'Bear tracks',
     channel : 'server'
-  }, options);
-  return new facade.Track(options);
+  }, options || {}));
 };
 
-
-
 /**
- * Use a particular user id
+ * Create an identify call merged from `options`
+ *
+ * @param {Object} options
+ * @return {Identify}
  */
 
 exports.identify = function (options) {
   options = options || {};
-  options = extend({
+  return new facade.Identify(merge({
     userId : firstId,
     traits : {
       fat         : 0.02,
@@ -96,16 +111,18 @@ exports.identify = function (options) {
     },
     timestamp : new Date(),
     channel : 'server'
-  }, options);
-  return new facade.Identify(options);
+  }, options));
 };
 
 /**
- * Page
+ * Create a page call merged from `options`
+ *
+ * @param {Object} options
+ * @return {Page}
  */
 
 exports.page = function(options){
-  return new facade.Page(extend({
+  return new facade.Page(merge({
     userId: firstId,
     properties: {
       url: 'https://segment.io/docs',
@@ -120,11 +137,14 @@ exports.page = function(options){
 };
 
 /**
- * Group
+ * Create a group call merged from `options`
+ *
+ * @param {Object} options
+ * @return {Group}
  */
 
 exports.group = function(options){
-  return new facade.Group(extend({
+  return new facade.Group(merge({
     groupId: groupId,
     userId: firstId,
     traits: {
@@ -143,13 +163,18 @@ exports.group = function(options){
   }, options || {}));
 };
 
+/**
+ * Create an alias call merged from `options`
+ *
+ * @param {Object} options
+ * @return {Alias}
+ */
 
 exports.alias = function (options) {
-  options = extend({
+  return new facade.Alias(merge({
     from      : firstId,
     to        : secondId,
     channel   : 'server',
     timestamp : new Date()
-  }, options);
-  return new facade.Alias(options);
+  }, options || {}));
 };
