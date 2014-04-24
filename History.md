@@ -1,4 +1,10 @@
 
+1.1.20 / 2014-04-24
+==================
+
+ * hubspot: adding fix for "date" types + test cleanup
+ * preact: added support for server-side Identify call, added source attribute to logged events and identify calls
+
 1.1.19 / 2014-04-22
 ==================
 
