@@ -85,6 +85,11 @@ describe('Customer.io', function () {
         done();
       });
     });
+
+    it('should identify with only an email as id', function(done){
+      var identify = new facade.Identify({ userId: 'amir@segment.io' });
+      cio.identify(identify, settings, done);
+    })
   });
 
 
