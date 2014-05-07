@@ -1,4 +1,10 @@
 
+1.1.21 / 2014-05-06
+==================
+
+ * webhooks: adding transform for new spec
+ * customerio: when the id is an email send it as .email too
+
 1.1.20 / 2014-04-24
 ==================
 

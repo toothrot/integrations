@@ -1,6 +1,6 @@
 {
   "name": "segmentio-integrations",
-  "version": "1.1.20",
+  "version": "1.1.21",
   "description": "Segment.io server-side integrations",
   "author": "Segment.io <friends@segment.io>",
   "engines": {
