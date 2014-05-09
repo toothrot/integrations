@@ -71,8 +71,7 @@ function testApiCall (call) {
       app.post(route, function (req, res, next) {
         var json = message.json();
         json.options = json.options || json.context;
-        transform(json);
-
+        json = transform(json);
         serialized(req.body).should.eql(serialized(json));
         res.send();
       });
