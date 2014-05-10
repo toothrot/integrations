@@ -8,15 +8,7 @@ var auth         = require('./auth')
 var frontleaf = new integrations['Frontleaf']()
   , settings = auth['Frontleaf'];
 
-var testEndpoint = frontleaf.endpoint = 'https://demo.frontleaf.com/api/track';
-
 describe('Frontleaf', function () {
-
-  describe('env', function () {
-    it('should point to our test system', function() {
-      should.equal(frontleaf.endpoint, testEndpoint);
-    });
-  });
 
   describe('.enabled()', function () {
     it('should only be enabled for server side messages', function () {
@@ -27,7 +19,6 @@ describe('Frontleaf', function () {
       frontleaf.enabled(new facade.Track({})).should.not.be.ok;
     });
   });
-
 
   describe('.validate()', function () {
     it('should not validate settings without a token and stream', function () {
