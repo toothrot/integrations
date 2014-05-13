@@ -52,8 +52,33 @@ describe('gainsight', function () {
 
   describe('.alias()', function () {
     var alias = helpers.alias();
-    it('should do nothing', function (done) {
+    it('success', function (done) {
       gainsight.alias(alias, settings, done);
     });
   });
+
+
+  describe('.group()', function () {
+    var alias = helpers.alias();
+    it('success', function (done) {
+      gainsight.alias(alias, settings, done);
+    });
+  });
+
+
+  describe('.page()', function () {
+    var alias = helpers.alias();
+    it('success', function (done) {
+      gainsight.alias(alias, settings, done);
+    });
+  });
+
+
+  describe('.screen()', function () {
+    var alias = helpers.alias();
+    it('success', function (done) {
+      gainsight.alias(alias, settings, done);
+    });
+  });
+
 });
