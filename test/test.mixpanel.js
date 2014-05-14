@@ -58,7 +58,7 @@ describe('Mixpanel', function () {
     it('should increment', function(done){
       var opts = {};
       for (var k in settings) opts[k] = settings[k];
-      var track = helpers.track();
+      var track = helpers.track({ event: 'increment' });
       opts.increments = [track.event()];
       mixpanel.track(track, opts, done);
     })
