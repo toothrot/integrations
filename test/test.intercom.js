@@ -82,6 +82,19 @@ describe('Intercom', function () {
       var group = helpers.group();
       intercom.group(group, settings, done);
     })
+
+    it('should work with .createdAt', function(done){
+      var traits = { createdAt: 'Jan 1, 2000 3:32:33 PM', name: 'old company' };
+      var group = helpers.group({ traits: traits, groupId: 'a5322d6' });
+      delete group.obj.traits.created;
+      intercom.group(group, settings, done);
+    })
+
+    it('should work with .created', function(done){
+      var traits = { created: 'Jan 1, 2014 3:32:33 PM', name: 'new company' };
+      var group = helpers.group({ traits: traits, groupId: 'e186e5de' });
+      intercom.group(group, settings, done);
+    })
   })
 
   describe('.track()', function () {
