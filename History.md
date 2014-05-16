@@ -1,5 +1,10 @@
 
-1.1.25 / 2014-05-16 
+1.1.26 / 2014-05-16
+==================
+
+ * keen: adding addons, fixes #85 and fixing error responses.
+
+1.1.25 / 2014-05-16
 ==================
 
  * kissmetrics: only stringify objects
