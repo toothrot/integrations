@@ -1,4 +1,11 @@
 
+1.1.25 / 2014-05-16 
+==================
+
+ * kissmetrics: only stringify objects
+ * intercom: allow createdAt / created_at
+ * tests: chnage mixpanel increment event, to be "increment"
+
 1.1.24 / 2014-05-09
 ==================
 
