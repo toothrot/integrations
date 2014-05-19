@@ -21,6 +21,8 @@ var email = 'testing-' + firstId + '@segment.io';
 
 exports.track = function (options) {
   options = options || {};
+  options.context = options.options || options.context || {};
+  delete options.options;
   return new facade.Track(merge({
     userId     : firstId,
     event      : 'Baked a cake',
@@ -39,7 +41,7 @@ exports.track = function (options) {
     },
     channel    : 'server',
     timestamp  : new Date(),
-    options : {
+    context : {
       traits : {
         email   : options.email || email,
         age     : 23,
