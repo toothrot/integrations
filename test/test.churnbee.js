@@ -1,4 +1,5 @@
 
+var test = require('segmentio-integration-tester');
 var integration = require('segmentio-integration');
 var ValidationError = integration.errors.Validation;
 var facade = require('segmentio-facade');
@@ -73,27 +74,36 @@ describe('ChurnBee', function(){
   })
 
   describe('.track()', function(){
+    var track = helpers.track();
+
     it('should track register correctly', function(done){
-      var track = helpers.track({ event: 'baz', userId: 'sio' });
-      var conf = { apiKey: settings.apiKey };
-      conf.events = { Baz: 'register' };
-      churnbee.track(track, conf, done);
+      var events = {};
+      events[track.event()] = 'register';
+
+      test(churnbee)
+        .set({ apiKey: settings.apiKey })
+        .set({ events: events })
+        .track({ event: track.event(), userId: track.userId() })
+        .sends('?accessToken=' + settings.apiKey)
+        .expects(200, done);
     })
 
-    it('should track register again', function(done){
-      var track = helpers.track({ event: 'register', userId: 'sio' });
-      churnbee.track(track, settings, done);
+    it('should track register again and not error', function(done){
+      test(churnbee)
+        .set(settings)
+        .track({ event: 'register', userId: track.userId() })
+        .end(function(err, res){
+          if (err) return done(err);
+          done();
+        });
     })
 
     it('should track login', function(done){
-      var track = helpers.track({ event: 'baz', userId: 'sio' });
-      var conf = { apiKey: settings.apiKey };
-      conf.events = { baz: 'login' };
-      churnbee.track(track, conf, function(err, res){
-        if (err) return done(err);
-        res.status.should.eql(200);
-        done();
-      });
+      test(churnbee)
+        .set(settings)
+        .set({ events: { baz: 'login' } })
+        .track({ event: 'baz', userId: track.userId() })
+        .expects(200, done);
     })
 
     it('should error on incorrect settings', function(done){
@@ -102,6 +112,34 @@ describe('ChurnBee', function(){
         should.exist(err);
         done();
       });
+    })
+
+    it('should send properties', function(done){
+      var t = helpers.track.bare({
+        userId: track.userId(),
+        event: 'refund',
+        timestamp: new Date('1/1/2013'),
+        properties: {
+          plan: 'enterprise',
+          description: 'reason',
+          revenue: 9.99
+        }
+      });
+
+      var query = '?accessToken=' + settings.apiKey
+        + '&reason=reason'
+        + '&plan=enterprise'
+        + '&custom[plan]=enterprise'
+        + '&custom[description]=reason'
+        + '&custom[revenue]=9.99'
+        + '&amount=9.99'
+        + '&dateTime=2012-12-31T22%3A00%3A00.000Z'
+
+      test(churnbee)
+        .set(settings)
+        .track(t)
+        .sends(query)
+        .expects(200, done);
     })
   })
 })
