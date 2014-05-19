@@ -1,42 +1,32 @@
 
-var express      = require('express')
-  , facade       = require('segmentio-facade')
-  , helpers      = require('./helpers')
-  , integrations = require('..')
-  , should       = require('should')
-  , settings     = require('./auth.json')['Customer.io']
-  , cio          = new integrations['Customer.io']();
-
-
-var app = express().use(express.bodyParser())
-  , server;
-
+var test         = require('segmentio-integration-tester');
+var facade       = require('segmentio-facade');
+var helpers      = require('./helpers');
+var integrations = require('..');
+var should       = require('should');
+var settings     = require('./auth.json')['Customer.io'];
+var convert      = require('convert-dates');
+var time         = require('unix-time');
 
 describe('Customer.io', function () {
+  var cio;
+
+  beforeEach(function(){
+    cio = new integrations['Customer.io']();
+  })
 
   describe('.enabled()', function () {
     it('should only be enabled for server side messages', function () {
-      cio.enabled(new facade.Track({
-        channel: 'server',
-        userId: 'userId'
-      })).should.be.ok;
-      cio.enabled(new facade.Alias({ channel : 'client' })).should.not.be.ok;
-      cio.enabled(new facade.Alias({})).should.not.be.ok;
+      test(cio).server({ userId: 'id' }).should.be.true;
+      test(cio).client({ userId: 'id' }).should.be.false;
+      test(cio).mobile({ userId: 'id' }).should.be.false;
     });
 
     it('should only be enabled for messages with `userId`', function () {
-      cio.enabled(new facade.Track({
-        sessionId: 'session',
-        channel: 'server'
-      })).should.not.be.ok;
-
-      cio.enabled(new facade.Track({
-        userId: 'userId',
-        channel: 'server'
-      })).should.be.ok;
+      test(cio).server().should.be.false;
+      test(cio).server({ userId: 'id' }).should.be.true;
     });
   });
-
 
   describe('.validate()', function () {
     it('should require an apiKey', function () {
@@ -56,39 +46,75 @@ describe('Customer.io', function () {
 
 
   describe('.track()', function () {
-    it('should get a good response from the API', function (done) {
-      var track = helpers.track();
-      cio.track(track, settings, done);
+    var payload;
+    var track;
+
+    beforeEach(function(){
+      track = helpers.track();
+    })
+
+    beforeEach(function(){
+      payload = {
+        timestamp: time(track.timestamp()),
+        data: convert(track.properties(), time),
+        name: track.event()
+      };
+    })
+
+    it('should format and send correctly', function (done) {
+      test(cio)
+        .set(settings)
+        .track(track)
+        .path('/api/v1/customers/' + track.userId() + '/events')
+        .sends(payload)
+        .expects(200, done);
     });
 
-    it('will error on an invalid set of keys', function (done) {
-      var track = helpers.track();
-      cio.track(track, { apiKey : 'x', siteId : 'x' }, function (err) {
-        should.exist(err);
-        err.status.should.eql(401);
-        done();
-      });
-    });
+    it('should error on invalid set of keys', function(done){
+      test(cio)
+        .set({ apiKey: 'x', siteId: 'x' })
+        .track(track)
+        .error(done);
+    })
   });
 
   describe('.identify()', function () {
-    it('should get a good response from the API', function (done) {
-      var identify = helpers.identify();
-      cio.identify(identify, settings, done);
+    var identify;
+    var payload;
+
+    beforeEach(function(){
+      identify = helpers.identify();
+    })
+
+    beforeEach(function(){
+      payload = convert(identify.traits(), time);
+      payload.created_at = time(identify.created());
+      payload.email = identify.email();
+      delete payload.created;
+    })
+
+    it('should format and send correctly', function (done) {
+      test(cio)
+        .set(settings)
+        .identify(identify)
+        .path('/api/v1/customers/' + identify.userId())
+        .sends(payload)
+        .expects(200, done);
     });
 
     it('will error on an invalid set of keys', function (done) {
-      var identify = helpers.identify();
-      cio.identify(identify, { apiKey : 'x', siteId : 'x' }, function (err) {
-        should.exist(err);
-        err.status.should.eql(401);
-        done();
-      });
+      test(cio)
+        .set({ apiKey: 'x', siteId: 'x' })
+        .identify(helpers.identify())
+        .error(done);
     });
 
     it('should identify with only an email as id', function(done){
-      var identify = new facade.Identify({ userId: 'amir@segment.io' });
-      cio.identify(identify, settings, done);
+      test(cio)
+        .set(settings)
+        .identify({ userId: 'test@segment.io' })
+        .sends({ email: 'test@segment.io', id: 'test@segment.io' })
+        .expects(200, done);
     })
   });
 
@@ -102,8 +128,7 @@ describe('Customer.io', function () {
 
   describe('.visit()', function(){
     it('should not send the request if active is false', function(done){
-      var track = helpers.track();
-      track.obj.options.active = false;
+      var track = helpers.track({ context: { active: false } });
       cio.visit(track, settings, function(){
         arguments.length.should.eql(0);
         done();
