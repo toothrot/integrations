@@ -1,4 +1,12 @@
 
+1.1.27 / 2014-05-19
+==================
+
+ * Librato integration respects zero values coming in
+ * fix hubspot errors. reference
+ * add linting
+ * adding prefixing for event names, behind flag
+
 1.1.26 / 2014-05-16
 ==================
 
