@@ -1,4 +1,10 @@
 
+1.1.28 / 2014-05-19
+==================
+
+ * change kissmetrics setting, fix librato tests
+ * fix keen.io options.traits
+
 1.1.27 / 2014-05-19
 ==================
 
