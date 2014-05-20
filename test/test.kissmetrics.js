@@ -38,6 +38,20 @@ describe('KISSmetrics', function () {
     it('should be able to track correctly', function (done) {
       kissmetrics.track(track, settings, done);
     });
+
+    it('should prefix event properties if prefixProperties is enabled', function(){
+      var result = kissmetrics.mapper.track(track, { prefixProperties: true });
+      result['Baked a cake - layers'].should.eql('chocolate,strawberry,fudge');
+      result['Billing Amount'].should.eql(19.95);
+      result._n.should.eql('Baked a cake');
+    });
+
+    it('should not prefix event properties if prefixProperties is disabled', function(){
+      var result = kissmetrics.mapper.track(track, {});
+      result['layers'].should.eql('chocolate,strawberry,fudge');
+      result['Billing Amount'].should.eql(19.95);
+      result._n.should.eql('Baked a cake');
+    });
   });
 
 

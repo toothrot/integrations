@@ -53,16 +53,18 @@ describe('Librato', function () {
       librato.track(track, settings, done);
     });
 
-    it('defaults to reporting a 1', function (done) {
-      result = librato.mapper.track(track);
+    it('defaults to reporting a 1', function (){
+      var result = librato.mapper.track(track);
       result.value.should.equal(1);
-      done();
     });
 
-    it('allows reporting zeroes', function (done) {
-      result = librato.mapper.track(helpers.track({'properties': {'value': 0}}));
+    it('allows reporting zeroes', function(){
+      var result = librato.mapper.track(helpers.track({
+        properties: {
+          value: 0
+        }
+      }));
       result.value.should.equal(0)
-      done();
     });
   });
 
