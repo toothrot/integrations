@@ -6,39 +6,47 @@ var Track = require('segmentio-facade').Track;
 var Identify = require('segmentio-facade').Identify;
 var assert = require('assert');
 var amity = new Amity;
+var should = require('should');
 
 describe('Amity', function(){
 
   describe('.validate()', function(){
     it('should validate when client_id, client_secret, workspace_id, and external_id_source are given', function(){
       var msg = new Track({});
-      assert(null == amity.validate(msg, settings));
+      should.not.exist(amity.validate(msg, settings));
     });
 
     it('should error when any of the settings are missing', function(){
       var msg = new Track({});
-      assert(amity.validate(msg, { client_id: 'abc', client_secret: 'def', workspace_id: '1' }));
-      assert(amity.validate(msg, { client_id: 'abc', client_secret: 'def', external_id_source: 'salesforce' }));
-      assert(amity.validate(msg, { client_id: 'abc', workspace_id: '1', external_id_source: 'salesforce' }));
-      assert(amity.validate(msg, { client_secret: 'def', workspace_id: '1', external_id_source: 'salesforce' }));
+
+      should.not.exist(amity.validate(msg, { client_id: 'abc', client_secret: 'def', workspace_id: '1' }));
+      amity.validate(msg, { client_id: 'abc', client_secret: 'def', external_id_source: 'salesforce' }).should.be.instanceOf(Error);
+      amity.validate(msg, { client_id: 'abc', workspace_id: '1', external_id_source: 'salesforce' }).should.be.instanceOf(Error);
+      amity.validate(msg, { client_secret: 'def', workspace_id: '1', external_id_source: 'salesforce' }).should.be.instanceOf(Error);
     });
   });
 
   describe('.identify()', function(){
     it('should identify user successfully', function(done){
-      var msg = helpers.identify('1234', { traits: { email: 'amir@segment.io' } });
+      var msg = helpers.identify({  userId: "1234",
+                                    traits: {
+                                        full_name: "Sir API Guy",
+                                        email: 'amir@segment.io'
+                                    }
+                                });
       amity.identify(msg, settings, done);
     });
 
     it('should identify again', function(done){
-      var msg = helpers.identify('5678', { traits: { email: 'amir@segment.io' } });
+      var msg = helpers.identify({ traits: { email: 'amir@segment.io' } });
       amity.identify(msg, settings, done);
     });
   });
 
   describe('.group()', function(){
-    it('should be able to group properly', function(){
-      var msg = helpers.group();
+    it('should be able to group properly', function(done){
+      var msg = helpers.group({traits: {name: "test account"}});
+        amity.group(msg, settings, done);
     });
   });
 
