@@ -8,7 +8,6 @@ var auth         = require('./auth')
 var gainsight = new integrations['Gainsight']()
   , settings = auth['Gainsight'];
 
-
 describe('gainsight', function () {
 
   describe('.enabled()', function () {
@@ -59,7 +58,7 @@ describe('gainsight', function () {
 
 
   describe('.group()', function () {
-    var alias = helpers.alias();
+    var alias = helpers.group();
     it('success', function (done) {
       gainsight.alias(alias, settings, done);
     });
@@ -67,7 +66,7 @@ describe('gainsight', function () {
 
 
   describe('.page()', function () {
-    var alias = helpers.alias();
+    var alias = helpers.page();
     it('success', function (done) {
       gainsight.alias(alias, settings, done);
     });
@@ -75,7 +74,7 @@ describe('gainsight', function () {
 
 
   describe('.screen()', function () {
-    var alias = helpers.alias();
+    var alias = helpers.page();
     it('success', function (done) {
       gainsight.alias(alias, settings, done);
     });
