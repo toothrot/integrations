@@ -1,4 +1,9 @@
 
+1.1.29 / 2014-05-27
+==================
+
+ * Fix mixpanel integration from sending created_at
+
 1.1.28 / 2014-05-19
 ==================
 
