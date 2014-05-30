@@ -52,7 +52,7 @@ describe('Amity', function(){
 
   describe('.track()', function(){
     it('should track successfully', function(done){
-      var msg = helpers.track({event: 'A new event', properties: { name: 'Amity' }});
+      var msg = helpers.track({userId: settings.client_id, event: 'A new event', properties: { name: 'Amity' }});
       amity.track(msg, settings, done);
     });
   });
