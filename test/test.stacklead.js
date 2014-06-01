@@ -16,6 +16,10 @@ describe('StackLead', function () {
       stacklead.enabled(new facade.Identify({ channel : 'client' })).should.not.be.ok;
     });
 
+    it('should be disabled for manually', function () {
+      stacklead.enabled(new facade.Identify({ options : {StackLead: false }})).should.not.be.ok;
+    });
+
     it('should be enabled for messages with emails', function () {
       stacklead.enabled(new facade.Identify({
         channel: 'server',
