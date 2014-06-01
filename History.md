@@ -1,4 +1,56 @@
 
+1.1.29 / 2014-05-27
+==================
+
+ * Fix mixpanel integration from sending created_at
+
+1.1.28 / 2014-05-19
+==================
+
+ * change kissmetrics setting, fix librato tests
+ * fix keen.io options.traits
+
+1.1.27 / 2014-05-19
+==================
+
+ * Librato integration respects zero values coming in
+ * fix hubspot errors. reference
+ * add linting
+ * adding prefixing for event names, behind flag
+
+1.1.26 / 2014-05-16
+==================
+
+ * keen: adding addons, fixes #85 and fixing error responses.
+
+1.1.25 / 2014-05-16
+==================
+
+ * kissmetrics: only stringify objects
+ * intercom: allow createdAt / created_at
+ * tests: chnage mixpanel increment event, to be "increment"
+
+1.1.24 / 2014-05-09
+==================
+
+ * frontleaf: adding frontleaft integration
+
+1.1.23 / 2014-05-08
+==================
+
+ * kissmetrics: fix merge error
+
+1.1.22 / 2014-05-08
+==================
+
+ * kissmetrics: add auto-alias
+
+1.1.21 / 2014-05-06
+==================
+
+ * webhooks: adding transform for new spec
+ * customerio: when the id is an email send it as .email too
+
 1.1.20 / 2014-04-24
 ==================
 

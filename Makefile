@@ -1,4 +1,10 @@
 
+SRC = lib/*.js lib/*/*.js
+
+ifndef NODE_ENV
+include node_modules/make-lint/index.mk
+endif
+
 REPORTER= spec
 grep=.
 
