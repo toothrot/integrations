@@ -35,49 +35,84 @@ describe('gainsight', function () {
 
   describe('.track()', function () {
     var track = helpers.track();
-    it('should track correctly', function (done) {
+    
+    it('success', function (done) {
       gainsight.track(track, settings, done);
+    });
+
+    it('should error with invalid access key', function (done) {
+      gainsight.track(track, {"accessKey" : "1234"}, function(err) {
+        should.exist(err);
+        done();
+      });
     });
   });
 
 
   describe('.identify()', function () {
     var identify = helpers.identify();
-    it('should be able to identify correctly', function (done) {
+    
+    it('success', function (done) {
+      var identify = helpers.identify();
       gainsight.identify(identify, settings, done);
+    });
+
+    it('should error with invalid access key', function (done) {
+      gainsight.identify(identify, {"accessKey" : "1234"}, function(err) {
+        should.exist(err);
+        done();
+      });
     });
   });
 
 
   describe('.alias()', function () {
     var alias = helpers.alias();
+    
     it('success', function (done) {
       gainsight.alias(alias, settings, done);
     });
+
+    it('should error with invalid access key', function (done) {
+      gainsight.alias(alias, {"accessKey" : "1234"}, function(err) {
+        should.exist(err);
+        done();
+      });
+    });
+
   });
 
 
   describe('.group()', function () {
-    var alias = helpers.group();
+    var group = helpers.group();
     it('success', function (done) {
-      gainsight.alias(alias, settings, done);
+      gainsight.group(group, settings, done);
     });
+
+    it('should error with invalid access key', function (done) {
+      gainsight.group(group, {"accessKey" : "1234"}, function(err) {
+        should.exist(err);
+        done();
+      });
+    });
+
   });
 
 
   describe('.page()', function () {
-    var alias = helpers.page();
+    var page = helpers.page();
+    
     it('success', function (done) {
-      gainsight.alias(alias, settings, done);
+      gainsight.page(page, settings, done);
     });
-  });
 
-
-  describe('.screen()', function () {
-    var alias = helpers.page();
-    it('success', function (done) {
-      gainsight.alias(alias, settings, done);
+    it('should error with invalid access key', function (done) {
+      gainsight.page(page, {"accessKey" : "1234"}, function(err) {
+        should.exist(err);
+        done();
+      });
     });
+
   });
 
 });
