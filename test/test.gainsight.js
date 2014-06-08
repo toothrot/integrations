@@ -19,7 +19,6 @@ describe('gainsight', function () {
     });
   });
 
-
   describe('.validate()', function () {
     it('should not validate settings without a accessKey', function () {
       var identify = helpers.identify();
@@ -32,10 +31,9 @@ describe('gainsight', function () {
     });
   });
 
-
   describe('.track()', function () {
     var track = helpers.track();
-    
+
     it('success', function (done) {
       gainsight.track(track, settings, done);
     });
@@ -48,10 +46,9 @@ describe('gainsight', function () {
     });
   });
 
-
   describe('.identify()', function () {
     var identify = helpers.identify();
-    
+
     it('success', function (done) {
       var identify = helpers.identify();
       gainsight.identify(identify, settings, done);
@@ -65,10 +62,9 @@ describe('gainsight', function () {
     });
   });
 
-
   describe('.alias()', function () {
     var alias = helpers.alias();
-    
+
     it('success', function (done) {
       gainsight.alias(alias, settings, done);
     });
@@ -79,12 +75,11 @@ describe('gainsight', function () {
         done();
       });
     });
-
   });
-
 
   describe('.group()', function () {
     var group = helpers.group();
+
     it('success', function (done) {
       gainsight.group(group, settings, done);
     });
@@ -95,13 +90,11 @@ describe('gainsight', function () {
         done();
       });
     });
-
   });
-
 
   describe('.page()', function () {
     var page = helpers.page();
-    
+
     it('success', function (done) {
       gainsight.page(page, settings, done);
     });
@@ -112,7 +105,5 @@ describe('gainsight', function () {
         done();
       });
     });
-
   });
-
 });
