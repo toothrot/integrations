@@ -4,21 +4,20 @@ var auth         = require('./auth')
   , integrations = require('..')
   , should       = require('should')
 
-var iron = new integrations['Iron IO']()
-  , settings = auth['Iron IO'];
+var iron = new integrations['Iron.io']()
+  , settings = auth['Iron.io'];
 
 
 describe('Iron IO', function () {
 
   describe('.enabled()', function () {
     var Track = facade.Track;
-    it('should only be enabled for server side messages', function () {
+    it('should be enabled for server and client-side messages', function () {
       iron.enabled(new Track({ channel : 'server' })).should.be.ok;
-      iron.enabled(new Track({ channel : 'client' })).should.not.be.ok;
+      iron.enabled(new Track({ channel : 'client' })).should.be.ok;
       iron.enabled(new Track({})).should.not.be.ok;
     });
   });
-
 
   describe('.validate()', function () {
     it('should not validate settings without a projectId', function () {
@@ -37,15 +36,12 @@ describe('Iron IO', function () {
     });
   });
 
-
   describe('.track()', function () {
     var track = helpers.track();
-
     it('should track correctly', function (done) {
       iron.track(track, settings, done);
     });
   });
-
 
   describe('.identify()', function () {
     var identify = helpers.identify();
@@ -53,7 +49,6 @@ describe('Iron IO', function () {
       iron.identify(identify, settings, done);
     });
   });
-
 
   describe('.alias()', function () {
     var alias = helpers.alias();
