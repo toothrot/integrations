@@ -1,57 +1,64 @@
-var auth         = require('./auth')
-  , facade       = require('segmentio-facade')
-  , helpers      = require('./helpers')
-  , integrations = require('..')
-  , should       = require('should');
+var assert = require('assert');
+var auth = require('./auth');
+var facade = require('segmentio-facade')
+var helpers = require('./helpers');
+var integrations = require('..');
+var settings = auth['Mixpanel'];
+var Track = facade.Track;
+var test = require('segmentio-integration-tester');
+
+/**
+ * Create our integration
+ */
+
+var mixpanel = new integrations['Mixpanel']();
 
 
-var mixpanel = new integrations['Mixpanel']()
-  , settings = auth['Mixpanel'];
+describe('Mixpanel', function(){
 
-
-describe('Mixpanel', function () {
-
-  describe('.enabled()', function () {
-    it('should only be enabled for server side messages', function () {
-      mixpanel.enabled(new facade.Track({ channel : 'server' })).should.be.ok;
-      mixpanel.enabled(new facade.Track({ channel : 'client' })).should.not.be.ok;
-      mixpanel.enabled(new facade.Track({})).should.not.be.ok;
+  describe('.enabled()', function(){
+    it('should only be enabled for server side messages', function(){
+      assert(test(mixpanel).server());
+      assert(!test(mixpanel).mobile());
+      assert(!test(mixpanel).client());
     });
   });
-
 
   describe('.validate()', function () {
-    it('should not validate settings without a token', function () {
+    it('should not validate settings without a token', function(){
       var identify = helpers.identify();
-      mixpanel.validate(identify, {}).should.be.instanceOf(Error);
+      var err = mixpanel.validate(identify, {});
+      assert(err instanceof Error);
     });
 
-    it('should validate proper identify calls', function () {
+    it('should validate proper identify calls', function(){
       var identify = helpers.identify();
-      should.not.exist(mixpanel.validate(identify, { token : 'x' }));
+      var err = mixpanel.validate(identify, { token: 'x' });
+      assert(!err);
     });
 
-    it('should not validate old track calls without an apiKey', function () {
-      var track = helpers.track({ timestamp : new Date('5/10/2013') });
-      mixpanel.validate(track, { token : 'x' }).should.be.instanceOf(Error);
+    it('should not validate old track calls without an apiKey', function(){
+      var track = helpers.track({ timestamp: new Date('5/10/2013') });
+      var err = mixpanel.validate(track, { token: 'x' });
+      assert(err instanceof Error);
     });
 
-    it('should validate old track calls with an apiKey', function () {
-      var track = helpers.track({ timestamp : new Date('5/10/2013') });
-      should.not.exist(mixpanel.validate(track, {
-        token : 'x',
-        apiKey : 'x'
-      }));
+    it('should validate old track calls with an apiKey', function(){
+      var track = helpers.track({ timestamp: new Date('5/10/2013') });
+      var err = mixpanel.validate(track, {
+        token: 'x',
+        apiKey: 'x'
+      });
+      assert(!err);
     });
   });
 
-
   describe('.track()', function () {
-    it('should be able to track correctly', function (done) {
+    it('should be able to track correctly', function(done){
       mixpanel.track(helpers.track(), settings, done);
     });
 
-    it('should be able to track a bare call', function (done) {
+    it('should be able to track a bare call', function(done){
       mixpanel.track(helpers.track.bare(), settings, done);
     });
 
@@ -65,13 +72,12 @@ describe('Mixpanel', function () {
 
     it('should be able to track ill-formed traits', function (done) {
       mixpanel.track(helpers.track.bare({
-        context : {
-          traits : 'aaa'
+        context: {
+          traits: 'aaa'
         }
       }), settings, done);
     });
   });
-
 
   describe('.identify()', function () {
     var identify = helpers.identify();
