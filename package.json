@@ -28,7 +28,8 @@
     "isodate-traverse": "~0.3.0",
     "date-math": "0.0.1",
     "merge-util": "^0.1.0",
-    "segmentio-transform-legacy": "^2.0.0"
+    "segmentio-transform-legacy": "^2.0.0",
+    "segmentio-integration-tester": "0.0.1"
   },
   "devDependencies": {
     "should": "~1.2.2",
