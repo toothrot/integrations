@@ -1,4 +1,12 @@
 
+1.1.30 / 2014-06-10
+==================
+
+ * vero: updating tests + cleanup
+ * stacklead: small mapping refactor
+ * gainsight: merging gainsight
+ * mixpanel: cleanup + adding `legacySuperProperties` setting
+
 1.1.29 / 2014-05-27
 ==================
 
