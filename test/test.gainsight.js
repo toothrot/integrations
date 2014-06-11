@@ -11,7 +11,7 @@ var settings = auth['Gainsight'];
 
 var gainsight = new integrations['Gainsight']()
 
-describe('gainsight', function () {
+describe('Gainsight', function () {
 
   describe('.enabled()', function () {
     var Track = facade.Track;
