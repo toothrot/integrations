@@ -1,28 +1,35 @@
-var auth         = require('./auth')
-  , facade       = require('segmentio-facade')
-  , helpers      = require('./helpers')
-  , integrations = require('..')
-  , should       = require('should');
+var auth = require('./auth');
+var facade = require('segmentio-facade');
+var helpers = require('./helpers');
+var integrations = require('..');
+var should = require('should');
+var settings = auth['Vero'];
+var Track = facade.Track;
 
+/**
+ * Create our integration
+ */
 
-var vero     = new integrations['Vero']()
-  , settings = auth['Vero'];
+var vero = new integrations['Vero']()
 
 
 describe('Vero', function () {
 
   describe('.enabled()', function () {
+    it('should not be enabled for client-side messages', function () {
+      vero.enabled(new Track({
+        channel: 'server',
+        userId: 'userId'
+      })).should.be.ok;
 
-    it('should only be enabled for server side messages', function () {
-      vero.enabled(new facade.Track({ channel : 'server' })).should.be.ok;
-      vero.enabled(new facade.Track({ channel : 'client' })).should.not.be.ok;
-      vero.enabled(new facade.Track({})).should.not.be.ok;
+      vero.enabled(new Track({
+        channel: 'client',
+        userId: 'userId'
+      })).should.not.be.ok;
     })
   });
 
-
   describe('.validate()', function () {
-
     it('should require an authToken', function () {
       vero.validate({}, { authToken : '' }).should.be.an.instanceOf(Error);
       vero.validate({}, {}).should.be.an.instanceOf(Error);
@@ -30,9 +37,7 @@ describe('Vero', function () {
     });
   });
 
-
   describe('.track()', function () {
-
     it('should get a good response from the API', function (done) {
       var track = helpers.track();
       vero.track(track, settings, done);
@@ -40,13 +45,11 @@ describe('Vero', function () {
   });
 
   describe('.identify()', function () {
-
     it('should get a good response from the API', function (done) {
       var identify = helpers.identify();
       vero.identify(identify, settings, done);
     });
   });
-
 
   describe('.alias()', function () {
     it('should alias correctly', function (done) {

@@ -1,12 +1,15 @@
-var auth         = require('./auth')
-  , facade       = require('segmentio-facade')
-  , helpers      = require('./helpers')
-  , integrations = require('..')
-  , should       = require('should');
+var auth = require('./auth');
+var facade = require('segmentio-facade');
+var helpers = require('./helpers');
+var integrations = require('..');
+var should = require('should');
+var settings = auth['Gainsight'];
 
+/**
+ * Set up our integration
+ */
 
 var gainsight = new integrations['Gainsight']()
-  , settings = auth['Gainsight'];
 
 describe('gainsight', function () {
 
@@ -22,7 +25,7 @@ describe('gainsight', function () {
   describe('.validate()', function () {
     it('should not validate settings without a accessKey', function () {
       var identify = helpers.identify();
-      gainsight.validate(identify, { }).should.be.instanceOf(Error);
+      gainsight.validate(identify, {}).should.be.instanceOf(Error);
     });
 
     it('should validate proper track', function () {
