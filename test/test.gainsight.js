@@ -15,9 +15,9 @@ describe('Gainsight', function () {
 
   describe('.enabled()', function () {
     var Track = facade.Track;
-    it('should only be enabled for server side messages', function () {
+    it('should only be enabled for all messages', function () {
       gainsight.enabled(new Track({ channel : 'server' })).should.be.ok;
-      gainsight.enabled(new Track({ channel : 'client' })).should.not.be.ok;
+      gainsight.enabled(new Track({ channel : 'client' })).should.be.ok;
       gainsight.enabled(new Track({})).should.not.be.ok;
     });
   });
