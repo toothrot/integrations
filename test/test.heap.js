@@ -32,14 +32,6 @@ describe('Heap', function () {
   });
 
   describe('.track()', function () {
-    it('should 404 when using non-existent identity', function (done) {
-      var track = helpers.track({email: "fake@email.com"});
-      heap.track(track, settings, function (err) {
-        err.should.be.instanceOf(Error);
-        done();
-      });
-    });
-
     it('should get a good response from the API', function (done) {
       var track = helpers.track({email: settings.email});
       heap.track(track, settings, done);
