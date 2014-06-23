@@ -53,6 +53,14 @@ describe('Drip', function(){
       var msg = helpers.identify({ traits: { email: 'amir@segment.io' } });;
       drip.identify(msg, settings, done);
     })
+
+    it('should error with BadRequest on wrong creds', function(done){
+      var msg = helpers.identify({});
+      drip.identify(msg, { accountId: 1, token: 'x' }, function(err){
+        assert(err);
+        done();
+      })
+    })
   })
 
   describe('.campaignId()', function(){
