@@ -1,4 +1,11 @@
 
+1.1.33 / 2014-06-23
+==================
+
+ * ga: add ecommerce, closes #125
+ * drip: fix undefined BadRequest
+ * make-test: lint before testing
+
 1.1.32 / 2014-06-23
 ==================
 
