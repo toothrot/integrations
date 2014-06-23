@@ -38,7 +38,7 @@ The easiest way to start is to model the integration off existing integrations. 
 In addition, depending on the type of integration, you will want to add methods to actually track user data.
 
 * `.identify(userId, traits)` - tag users with specific data
-* `.group(userId, groupId, traits)` - tag users with specific data
+* `.group(userId, groupId, traits)` - creates a group, and associates a user with it
 * `.track(userId, event)` - track user actions
 * `.page(userId, name, category, properties)` - track a webpage view
 * `.screen(userId, name, category, properties)` - track a mobile screen view
