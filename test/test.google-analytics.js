@@ -65,6 +65,13 @@ describe('Google Analytics', function () {
         });
       });
     });
+
+    describe('ecommerce', function(){
+      it('should send ecommerce data', function(done){
+        var track = helpers.transaction();
+        ga.track(track, settings, done);
+      });
+    });
   });
 
 

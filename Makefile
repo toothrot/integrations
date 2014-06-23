@@ -1,19 +1,18 @@
 
 SRC = lib/*.js lib/*/*.js
+REPORTER = spec
+GREP ?=.
 
 ifndef NODE_ENV
 include node_modules/make-lint/index.mk
 endif
-
-REPORTER= spec
-grep=.
 
 test:
 	@./node_modules/.bin/mocha \
 		--timeout 20s \
 		--require should \
 		--reporter $(REPORTER) \
-		--grep $(grep)
+		--grep $(GREP)
 
 test-cov: lib-cov
 	@INTEGRATIONS_COV=1 \
