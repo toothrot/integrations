@@ -7,8 +7,8 @@ Segment.io's support for server-side integrations. Turns fields from our [facade
 
 ```javascript
 var integrations = require('segmentio-integrations')
-  , facade       = require('segmentio-facade')
-  , ga           = new integrations['Google Analytics']();
+var facade = require('segmentio-facade')
+var ga = new integrations['Google Analytics']();
 
 var track = new facade.Track({});
 
@@ -37,9 +37,14 @@ The easiest way to start is to model the integration off existing integrations. 
 
 In addition, depending on the type of integration, you will want to add methods to actually track user data.
 
-* `.track()` - track user actions
-* `.identify()` - tag users with specific data
-* `.alias()` - alias one user id to another
+* `.identify(userId, traits)` - tag users with specific data
+* `.group(userId, groupId, traits)` - tag users with specific data
+* `.track(userId, event)` - track user actions
+* `.page(userId, name, category, properties)` - track a webpage view
+* `.screen(userId, name, category, properties)` - track a mobile screen view
+* `.alias(previousId, userId)` - alias one user id to another
+
+Our [tracking API](https://segment.io/docs/tracking-api/) docs have much more information about each of the methods.
 
 It's worth checking out our [facade](https://github.com/segmentio/facade) objects to see what sort of fields are available to your provider. In general, you will want to use `.proxy()` to match keys fuzzily. If you see a field being used in multiple places, you can submit a request to add it to facade as well and give it a proper name.
 
