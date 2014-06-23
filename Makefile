@@ -1,12 +1,11 @@
 
 SRC = lib/*.js lib/*/*.js
+REPORTER = spec
+GREP ?=.
 
 ifndef NODE_ENV
 include node_modules/make-lint/index.mk
 endif
-
-REPORTER= spec
-GREP ?=.
 
 test: lint
 	@./node_modules/.bin/mocha \
