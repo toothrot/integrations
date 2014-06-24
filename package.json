@@ -21,21 +21,21 @@
     "unix-time": "~1.0.1",
     "segmentio-integration": "~1.2.0",
     "ua-parser-js": "0.6.X",
-    "segmentio-facade": "~0.3.10",
+    "segmentio-facade": "~1.2.0",
     "obj-case": "0.0.1",
     "isostring": "0.0.1",
     "convert-dates": "~0.1.0",
     "isodate-traverse": "~0.3.0",
     "date-math": "0.0.1",
     "merge-util": "^0.1.0",
-    "segmentio-transform-legacy": "^2.0.0",
-    "segmentio-integration-tester": "0.0.1"
+    "segmentio-transform-legacy": "^2.0.0"
   },
   "devDependencies": {
     "should": "~1.2.2",
     "mocha": "*",
     "express": "~3.2.6",
     "uid": "0.0.2",
-    "make-lint": "~1.0.1"
+    "make-lint": "~1.0.1",
+    "segmentio-integration-tester": "*"
   }
 }

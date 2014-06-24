@@ -163,9 +163,33 @@ exports.identify = function (options) {
 exports.page = function(options){
   return new facade.Page(merge({
     userId: firstId,
+    name: 'Docs',
     properties: {
       url: 'https://segment.io/docs',
       title: 'Analytics.js - Segment.io'
+    },
+    context: {
+      ip: '12.212.12.49'
+    },
+    timestamp: new Date,
+    channel: 'server'
+  }, options || {}));
+};
+
+/**
+ * Create a screen call merged from `options`
+ *
+ * @param {Object} options
+ * @return {Page}
+ */
+
+exports.screen = function(options){
+  return new facade.Screen(merge({
+    userId: firstId,
+    name: 'Login',
+    category: 'Authentication',
+    properties: {
+      type: 'Facebook'
     },
     context: {
       ip: '12.212.12.49'
