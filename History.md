@@ -1,4 +1,10 @@
 
+1.1.34 / 2014-06-24
+==================
+
+ * amplitude: adding page and screen calls
+ * calq: adding integration
+
 1.1.33 / 2014-06-23
 ==================
 
