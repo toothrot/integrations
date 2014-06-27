@@ -1,4 +1,10 @@
 
+1.1.35 / 2014-06-26
+==================
+
+ * amplitude: adding event properties
+ * intercom: fix last seen ip, fixes #135
+
 1.1.34 / 2014-06-24
 ==================
 
