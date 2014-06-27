@@ -37,7 +37,8 @@ describe('Amplitude', function() {
       var event = JSON.stringify({
         time: page.timestamp.getTime(),
         user_properties: {},
-        event_type: 'Viewed name Page'
+        event_type: 'Viewed name Page',
+        event_properties: { name: 'name' }
       });
 
       test(amplitude)
@@ -64,7 +65,10 @@ describe('Amplitude', function() {
       var event = JSON.stringify({
         time: screen.timestamp.getTime(),
         user_properties: {},
-        event_type: 'Viewed name Screen'
+        event_type: 'Viewed name Screen',
+        event_properties: {
+          name: 'name'
+        }
       });
 
       test(amplitude)
@@ -95,7 +99,8 @@ describe('Amplitude', function() {
         time: track.timestamp.getTime(),
         user_properties: {},
         revenue: 42,
-        event_type: 'event'
+        event_type: 'event',
+        event_properties: {}
       });
 
       test(amplitude)
