@@ -113,6 +113,30 @@ describe('Amplitude', function() {
         .expects(200, done);
     });
 
+    it('should track event_id properly', function(done){
+      var track = {
+        timestamp: new Date(),
+        event: 'event',
+        options: { Amplitude: { event_id: 'foo' }}
+      };
+      var event = JSON.stringify({
+        time: track.timestamp.getTime(),
+        user_properties: {},
+        event_id: 'foo',
+        event_type: 'event',
+        event_properties: {}
+      });
+
+      test(amplitude)
+        .set(settings)
+        .track(track)
+        .query({
+          api_key: settings.apiKey,
+          event: event
+        })
+        .expects(200, done);
+    });
+
     it('should be able to track correctly', function(done) {
       amplitude.track(helpers.track(), settings, done);
     });
