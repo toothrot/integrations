@@ -1,4 +1,9 @@
 
+1.1.37 / 2014-07-03
+==================
+
+ * amplitude: updating context to include device_type
+
 1.1.36 / 2014-06-27
 ==================
 
