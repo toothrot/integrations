@@ -1,55 +1,114 @@
-var auth         = require('./auth')
-  , facade       = require('segmentio-facade')
-  , helpers      = require('./helpers')
-  , integrations = require('..')
-  , should       = require('should');
+var auth = require('./auth');
+var assert = require('assert');
+var crypto = require('crypto');
+var facade = require('segmentio-facade')
+var helpers = require('./helpers')
+var integrations = require('..')
+var should = require('should');
+var test = require('segmentio-integration-tester');
 
+/**
+ * Create our integration
+ */
 
-var woopra   = new integrations['Woopra']()
-  , settings = auth['Woopra'];
+var woopra = new integrations.Woopra;
 
+/**
+ * Store our settings
+ */
 
-describe('Woopra', function () {
+var settings = auth['Woopra'];
 
-  describe('.enabled()', function () {
+/**
+ * Run tests
+ */
 
-    it('should only be enabled for server side messages', function () {
-      woopra.enabled(new facade.Track({ channel : 'server' })).should.be.ok;
-      woopra.enabled(new facade.Track({ channel : 'client' })).should.not.be.ok;
-      woopra.enabled(new facade.Track({})).should.not.be.ok;
+describe('Woopra', function(){
+  describe('.enabled()', function(){
+    it('should only be enabled for server side messages', function(){
+      assert(test(woopra).enabled({ channel: 'server' }));
+      assert(test(woopra).disabled({ channel: 'client' }));
+      assert(test(woopra).disabled({}));
     });
   });
 
+  describe('.validate()', function(){
+    it('should require a domain', function(){
+      assert(validate({ domain: '' }) === false);
+      assert(validate({}) === false);
+      assert(validate({ domain: 'xxx' }) === true);
 
-  describe('.validate()', function () {
-
-    it('should require a domain', function () {
-      woopra.validate({}, { domain : '' }).should.be.an.instanceOf(Error);
-      woopra.validate({}, {}).should.be.an.instanceOf(Error);
-      should.not.exist(woopra.validate({}, { domain : 'xxx' }));
+      function validate(settings){
+        var err = woopra.validate({}, settings);
+        return !err;
+      }
     });
   });
 
+  describe('.track()', function(){
+    it('should track successfully', function(done){
+      var track = {
+        properties: { revenue: 100, prop: 'prop' },
+        context: { ip: '127.0.0.1' },
+        timestamp: new Date(),
+        userId: 'userId',
+        event: 'event'
+      };
 
-  describe('.track()', function () {
-    it('should track successfully', function (done) {
-      var track = helpers.track();
-      woopra.track(track, settings, done);
+      test(woopra)
+        .set(settings)
+        .track(track)
+        .query({
+          timestamp: track.timestamp.getTime().toString(),
+          cookie: md5('userId'),
+          host: settings.domain,
+          ce_name: 'event',
+          ce_revenue: '100',
+          ce_prop: 'prop',
+          ip: '127.0.0.1',
+          timeout: '30'
+        })
+        .expects(200, done);
     });
   });
 
-  describe('.identify()', function () {
-    it('should identify successfully', function (done) {
-      var identify = helpers.identify();
-      woopra.identify(identify, settings, done);
-    });
-  });
+  describe('.identify()', function(){
+    it('should identify successfully', function(done){
+      var identify = {
+        traits: { company: 'company', name: 'name' },
+        context: { ip: '127.0.0.1' },
+        timestamp: new Date(),
+        userId: 'userId',
+      };
 
-
-  describe('.alias()', function () {
-    it('should do nothing', function (done) {
-      var alias = helpers.alias();
-      woopra.alias(alias, settings, done);
+      test(woopra)
+        .set(settings)
+        .identify(identify)
+        .query({
+          timestamp: identify.timestamp.getTime().toString(),
+          cookie: md5('userId'),
+          host: settings.domain,
+          cv_company: 'company',
+          cv_name: 'name',
+          cv_id: 'userId',
+          ip: '127.0.0.1',
+          timeout: '30'
+        })
+        .expects(200, done);
     });
   });
 });
+
+/**
+ * Hash the string for the userId
+ *
+ * @param {String} str
+ * @return {String} [description]
+ */
+
+function md5(str){
+  return crypto
+    .createHash('md5')
+    .update(str)
+    .digest('hex');
+}
