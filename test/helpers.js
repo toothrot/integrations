@@ -164,6 +164,7 @@ exports.page = function(options){
   return new facade.Page(merge({
     userId: firstId,
     name: 'Docs',
+    category: 'Support',
     properties: {
       url: 'https://segment.io/docs',
       title: 'Analytics.js - Segment.io'

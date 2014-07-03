@@ -1,9 +1,11 @@
-var auth            = require('./auth.json')
+var test            = require('segmentio-integration-tester')
+  , auth            = require('./auth.json')
   , facade          = require('segmentio-facade')
   , GoogleAnalytics = require('..')['Google Analytics']
   , ga              = new GoogleAnalytics()
   , helpers         = require('./helpers')
-  , should          = require('should');
+  , should          = require('should')
+  , hash            = require('string-hash');
 
 
 describe('Google Analytics', function () {
@@ -43,7 +45,20 @@ describe('Google Analytics', function () {
     describe('.page()', function(){
       it('should get a good response from the API', function(done){
         var page = helpers.page();
-        ga.page(page, settings, done);
+        test(ga.universal)
+          .set(settings)
+          .page(page)
+          .sends({
+            tid: settings.serversideTrackingId,
+            cid: hash(page.userId()),
+            uip: page.ip(),
+            dh: 'segment.io',
+            t: 'pageview',
+            dp: '/docs',
+            dt: 'Support Docs',
+            v: 1
+          })
+          .expects(200, done);
       })
     })
 
