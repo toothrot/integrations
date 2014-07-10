@@ -73,9 +73,14 @@ describe('ChurnBee', function(){
   })
 
   describe('.track()', function(){
+    var conf;
+
+    beforeEach(function(){
+      conf = { apiKey: settings.apiKey };
+    })
+
     it('should track register correctly', function(done){
       var track = helpers.track({ event: 'baz', userId: 'sio' });
-      var conf = { apiKey: settings.apiKey };
       conf.events = { Baz: 'register' };
       churnbee.track(track, conf, done);
     })
@@ -87,7 +92,6 @@ describe('ChurnBee', function(){
 
     it('should track login', function(done){
       var track = helpers.track({ event: 'baz', userId: 'sio' });
-      var conf = { apiKey: settings.apiKey };
       conf.events = { baz: 'login' };
       churnbee.track(track, conf, function(err, res){
         if (err) return done(err);
@@ -98,8 +102,19 @@ describe('ChurnBee', function(){
 
     it('should error on incorrect settings', function(done){
       var track = helpers.track({ event: 'baz' });
-      churnbee.track(track, {}, function(err){
+      conf.apiKey = 'x';
+      conf.events = { baz: 'login' };
+      churnbee.track(track, conf, function(err){
         should.exist(err);
+        done();
+      });
+    })
+
+    it('should accept array of events', function(done){
+      var track = helpers.track({ event: 'baz', userId: 'sio' });
+      conf.events = [{ key: 'baz', value: 'login' }];
+      churnbee.track(track, conf, function(err, res){
+        if (err) return done(err);
         done();
       });
     })
