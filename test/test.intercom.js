@@ -1,43 +1,48 @@
-var auth         = require('./auth')
-  , facade       = require('segmentio-facade')
-  , helpers      = require('./helpers')
-  , integrations = require('..')
-  , should       = require('should');
+var test = require('segmentio-integration-tester');
+var settings = require('./auth').Intercom;
+var facade = require('segmentio-facade');
+var Intercom = require('..').Intercom;
+var helpers = require('./helpers');
+var time = require('unix-time');
+var assert = require('assert');
+var should = require('should');
 
+/**
+ * Create our integration
+ */
 
-var intercom = new integrations['Intercom']()
-  , settings = auth['Intercom'];
+var intercom = new Intercom;
 
 
 describe('Intercom', function () {
-
   describe('.enabled()', function () {
     var Track = facade.Track;
     it('should only be enabled for server side messages', function () {
-      intercom.enabled(new Track({
-        userId: 'x',
-        channel: 'server'
-      })).should.be.ok;
-
-      intercom.enabled(new Track({
-        userId: 'x',
-        channel: 'client'
-      })).should.not.be.ok;
-
-      intercom.enabled(new Track({
+      assert(test(intercom).enabled({
+        channel: 'server',
         userId: 'x'
-      })).should.not.be.ok;
+      }));
+
+      assert(test(intercom).disabled({
+        channel: 'client',
+        userId: 'x'
+      }));
+
+      assert(test(intercom).disabled({
+        channel: 'mobile',
+        userId: 'x'
+      }));
     });
 
     it('should require a userId', function () {
-      intercom.enabled(new Track({
-        channel : 'server'
-      })).should.not.be.ok;
-
-      intercom.enabled(new Track({
-        userId: 'x',
+      assert(test(intercom).disabled({
         channel: 'server'
-      })).should.be.ok;
+      }));
+
+      assert(test(intercom).enabled({
+        channel: 'server',
+        userId: 'x'
+      }));
     });
   });
 
@@ -74,6 +79,24 @@ describe('Intercom', function () {
         should.not.exist(err);
         done();
       });
+    });
+
+    it('should send the ip address', function(done){
+      var timestamp = new Date();
+      test(intercom)
+        .set(settings)
+        .identify({
+          context: { ip: '70.211.71.236' },
+          timestamp: timestamp,
+          userId: 'userId'
+        })
+        .sends({
+          custom_attributes: { id: 'userId' },
+          last_request_at: time(timestamp),
+          last_seen_ip: '70.211.71.236',
+          user_id: 'userId',
+        })
+        .expects(200, done);
     });
   });
 
