@@ -1,4 +1,15 @@
 
+1.1.38 / 2014-07-11
+==================
+
+ * amplitude: updating sdk
+ * amplitude: adding anonymousId mapping for deviceId
+ * churnbee: fixing double callback
+ * churnbee: add array settings support
+ * intercom: migrating to v2 API
+ * ga: send page name, closes #140
+ * woopra: updating timestamp, fixes #145
+
 1.1.37 / 2014-07-03
 ==================
 
