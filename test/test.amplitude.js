@@ -113,15 +113,23 @@ describe('Amplitude', function() {
         .expects(200, done);
     });
 
-    it('should track event_id properly', function(done){
+    it('should track amplitude properties properly', function(done){
       var track = {
         timestamp: new Date(),
         event: 'event',
-        options: { Amplitude: { event_id: 'foo' }}
+        options: {
+          Amplitude: {
+            event_id: 'foo',
+            event_type: 'type',
+            session_id: 1234
+          }
+        }
       };
       var event = JSON.stringify({
         time: track.timestamp.getTime(),
         user_properties: {},
+        amplitude_event_type: 'type',
+        session_id: 1234,
         event_id: 'foo',
         event_type: 'event',
         event_properties: {}
@@ -138,7 +146,11 @@ describe('Amplitude', function() {
     });
 
     it('should track device info properly', function(done){
-      var device = { manufacturer: 'manufacturer', model: 'model' };
+      var device = {
+        manufacturer: 'manufacturer',
+        model: 'model',
+        brand: 'brand'
+      };
       var track = {
         timestamp: new Date(),
         event: 'event',
@@ -147,7 +159,9 @@ describe('Amplitude', function() {
       var event = JSON.stringify({
         time: track.timestamp.getTime(),
         user_properties: {},
-        device_type: 'Manufacturer model',
+        device_model: 'model',
+        device_brand: 'brand',
+        device_manufacturer: 'manufacturer',
         event_type: 'event',
         event_properties: {}
       });
