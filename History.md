@@ -1,4 +1,9 @@
 
+1.1.39 / 2014-07-14
+==================
+
+ * amplitude: updating to use separate fields + sessionId
+
 1.1.38 / 2014-07-11
 ==================
 
