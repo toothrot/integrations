@@ -59,6 +59,39 @@ describe('Iron IO', function () {
     });
   });
 
+  describe('.screen()', function () {
+    var screen = helpers.screen();
+    it('should be able to screen correctly', function (done) {
+      test(iron)
+        .set(settings)
+        .screen(screen)
+        .sends(message(screen))
+        .expects(200, done);
+    });
+  });
+
+  describe('.page()', function () {
+    var page = helpers.page();
+    it('should be able to page correctly', function (done) {
+      test(iron)
+        .set(settings)
+        .page(page)
+        .sends(message(page))
+        .expects(200, done);
+    });
+  });
+
+  describe('.alias()', function () {
+    var alias = helpers.alias();
+    it('should be able to alias correctly', function (done) {
+      test(iron)
+        .set(settings)
+        .alias(alias)
+        .sends(message(alias))
+        .expects(200, done);
+    });
+  });
+
   function message(msg){
     return {
       messages: [
