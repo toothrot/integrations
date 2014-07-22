@@ -1,12 +1,13 @@
-var auth         = require('./auth')
-  , facade       = require('segmentio-facade')
-  , helpers      = require('./helpers')
-  , integrations = require('..')
-  , should       = require('should')
+
+var test         = require('segmentio-integration-tester');
+var auth         = require('./auth');
+var facade       = require('segmentio-facade');
+var helpers      = require('./helpers');
+var integrations = require('..');
+var should       = require('should');
 
 var iron = new integrations['Iron.io']()
   , settings = auth['Iron.io'];
-
 
 describe('Iron IO', function () {
 
@@ -39,21 +40,63 @@ describe('Iron IO', function () {
   describe('.track()', function () {
     var track = helpers.track();
     it('should track correctly', function (done) {
-      iron.track(track, settings, done);
+      test(iron)
+        .set(settings)
+        .track(track)
+        .sends(message(track))
+        .expects(200, done);
     });
   });
 
   describe('.identify()', function () {
     var identify = helpers.identify();
     it('should be able to identify correctly', function (done) {
-      iron.identify(identify, settings, done);
+      test(iron)
+        .set(settings)
+        .identify(identify)
+        .sends(message(identify))
+        .expects(200, done);
+    });
+  });
+
+  describe('.screen()', function () {
+    var screen = helpers.screen();
+    it('should be able to screen correctly', function (done) {
+      test(iron)
+        .set(settings)
+        .screen(screen)
+        .sends(message(screen))
+        .expects(200, done);
+    });
+  });
+
+  describe('.page()', function () {
+    var page = helpers.page();
+    it('should be able to page correctly', function (done) {
+      test(iron)
+        .set(settings)
+        .page(page)
+        .sends(message(page))
+        .expects(200, done);
     });
   });
 
   describe('.alias()', function () {
     var alias = helpers.alias();
-    it('should do nothing', function (done) {
-      iron.alias(alias, settings, done);
+    it('should be able to alias correctly', function (done) {
+      test(iron)
+        .set(settings)
+        .alias(alias)
+        .sends(message(alias))
+        .expects(200, done);
     });
   });
+
+  function message(msg){
+    return {
+      messages: [
+        { body: JSON.stringify(msg.json()) }
+      ]
+    };
+  }
 });
