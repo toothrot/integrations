@@ -38,6 +38,6 @@
     "express": "~3.2.6",
     "uid": "0.0.2",
     "make-lint": "~1.0.1",
-    "segmentio-integration-tester": "*"
+    "segmentio-integration-tester": "git://github.com/segmentio/integration-tester"
   }
 }
