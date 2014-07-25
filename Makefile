@@ -1,4 +1,5 @@
 
+TESTS = $(wildcard test/index.js lib/*/test/*.js)
 SRC = lib/*.js lib/*/*.js
 REPORTER = spec
 GREP ?=.
@@ -8,7 +9,7 @@ include node_modules/make-lint/index.mk
 endif
 
 test: lint
-	@./node_modules/.bin/mocha \
+	@./node_modules/.bin/mocha $(TESTS) \
 		--timeout 20s \
 		--require should \
 		--reporter $(REPORTER) \
