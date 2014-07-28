@@ -5,6 +5,7 @@ var helpers = require('./helpers');
 var Track = require('segmentio-facade').Track;
 var Identify = require('segmentio-facade').Identify;
 var assert = require('assert');
+Amity.endpoint('https://demo.getamity.com/rest/v1/activities');
 var amity = new Amity;
 var should = require('should');
 
