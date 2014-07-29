@@ -1,0 +1,6 @@
+{
+  "from": "from-id",
+  "to": "to-id",
+  "channel": "server",
+  "type": "alias"
+}
