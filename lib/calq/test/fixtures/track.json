@@ -1,0 +1,36 @@
+{
+  "userId": "user-id",
+  "event": "Baked a cake",
+  "properties": {
+    "layers": [
+      "chocolate",
+      "strawberry",
+      "fudge"
+    ],
+    "revenue": 19.95,
+    "numLayers": 10,
+    "fat": 0.02,
+    "bacon": "1",
+    "address": {
+      "state": "CA",
+      "zip": 94107,
+      "city": "San Francisco"
+    }
+  },
+  "channel": "server",
+  "options": {
+    "traits": {
+      "email": "testing-user-id@segment.io",
+      "age": 23,
+      "bad": null,
+      "address": {
+        "state": "CA",
+        "zip": 94107,
+        "city": "San Francisco"
+      }
+    },
+    "ip": "4.184.68.0",
+    "userAgent": "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)"
+  },
+  "type": "track"
+}
