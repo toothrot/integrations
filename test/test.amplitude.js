@@ -145,7 +145,7 @@ describe('Amplitude', function() {
         .expects(200, done);
     });
 
-    it('should track device info properly', function(done){
+    it('should track context properly', function(done){
       var device = {
         manufacturer: 'manufacturer',
         model: 'model',
@@ -154,7 +154,7 @@ describe('Amplitude', function() {
       var track = {
         timestamp: new Date(),
         event: 'event',
-        context: { device: device }
+        context: { device: device, locale: 'en-US' }
       };
       var event = JSON.stringify({
         time: track.timestamp.getTime(),
@@ -162,6 +162,8 @@ describe('Amplitude', function() {
         device_model: 'model',
         device_brand: 'brand',
         device_manufacturer: 'manufacturer',
+        language: 'English',
+        country: 'United States',
         event_type: 'event',
         event_properties: {}
       });

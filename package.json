@@ -19,6 +19,7 @@
     "is": "~0.2.6",
     "isodate-traverse": "~0.3.0",
     "isostring": "0.0.1",
+    "locale-string": "^1.0.0",
     "lru-cache": "~2.3.0",
     "merge-util": "^0.1.0",
     "ms": "~0.6.1",
