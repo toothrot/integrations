@@ -1,4 +1,10 @@
 
+1.1.42 / 2014-07-30
+==================
+
+ * amplitude: adding locale parsing
+ * usercycle: dont cast objects to strings
+
 1.1.41 / 2014-07-23
 ==================
 
