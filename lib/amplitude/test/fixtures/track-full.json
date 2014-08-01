@@ -21,7 +21,6 @@
       "network": { "carrier": "carrier" },
       "ip": "0.0.0.0",
       "location": {
-        "country": "some awesome country",
         "latitude": "latitude",
         "longitude": "longitude"
       }
@@ -41,7 +40,6 @@
     "app_version": "app-version",
     "client_os": "os-version",
     "client_sdk": "analytics-ios",
-    "country": "some awesome country",
     "device_brand": "device-brand",
     "device_carrier": "carrier",
     "device_id": "device-id",
