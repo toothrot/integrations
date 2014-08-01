@@ -1,6 +1,8 @@
 
 var facade = require('segmentio-facade');
 var merge = require('merge-util');
+var join = require('path').join;
+var assert = require('assert');
 var uid = require('uid');
 
 /**
@@ -11,6 +13,32 @@ var firstId  = uid();
 var secondId = uid();
 var groupId  = uid();
 var email = 'testing-' + firstId + '@segment.io';
+
+/**
+ * Mapper tester.
+ *
+ * @param {String} dirname
+ * @return {Function}
+ */
+
+exports.mapper = function(dirname){
+  assert(dirname, '__dirname must be supplied');
+  dirname = join(dirname, 'fixtures');
+  return function(integration){
+    integration.fixture = function(name, settings){
+      var dir = join(dirname, name + '.json');
+      var json = require(dir);
+      var input = json.input;
+      var output = json.output;
+      var type = input.type[0].toUpperCase() + input.type.slice(1);
+      var Type = facade[type];
+      var map = integration.mapper[input.type];
+      var mapped = map.call(integration, new Type(input), settings || {});
+      mapped = JSON.parse(JSON.stringify(mapped)); // dates
+      mapped.should.eql(output);
+    };
+  };
+};
 
 /**
  * Create ecommerce transaction.
