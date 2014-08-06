@@ -24,7 +24,7 @@
     "merge-util": "^0.1.0",
     "ms": "~0.6.1",
     "obj-case": "0.0.1",
-    "segmentio-facade": "~1.2.0",
+    "segmentio-facade": "1.2.x",
     "segmentio-integration": "~1.3.0",
     "segmentio-transform-legacy": "^2.0.0",
     "string-hash": "~1.1.0",
