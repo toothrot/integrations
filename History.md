@@ -1,4 +1,60 @@
 
+1.1.43 / 2014-08-06
+===================
+
+  * Dont pass undefined to string-hash
+  * Create a mapper for MailChimp integration
+  * CommandIQ: ocd
+  * preact: send extras
+  * amplitude: fix tests for locale change
+  * mixpanel: add .track() tests
+  * calq: new fixtures
+  * amplitude: add fixtures
+  * deps: update Integration to 1.3.x
+  * gainsight: skip .track()
+  * gainsight: skip tests until we have a new key
+  * mixpanel: add some tests
+  * iterable: add fixtures
+  * mailchimp: add tests
+  * Klav: update tests
+  * KISSmetrics: update tests
+  * keen: update tests
+  * re-pin integration
+  * amplitude: update tests
+  * klaviyo: add tests
+  * kissmetrics: add tests
+  * keen: add more tests
+  * keen: add tests
+  * helpers: add mapper test plugin
+  * intercom tests: fix .track()
+  * librato: add tests
+  * librato: export clean
+  * lytics: add tests
+  * outbound: add tests
+  * preact: add tests
+  * stacklead: add tests
+  * trak.io: add tests
+  * Iterable: add tests
+  * usercycle: add tests
+  * iron-io: add tests
+  * Intercom: add tests
+  * hubspot: add tests
+  * helpscout: add tests
+  * heap: add tests
+  * ga: add tests
+  * frontleaf: add tests
+  * drip: add tests
+  * customerio: add tests
+  * churnbee: add tests
+  * Update vero tests
+  * Update amplitude
+  * amplitude example
+  * tests: move all tests to lib/*/test, and inline settings
+  * tests: add test to ensure all integrations are exported
+  * expose integrations all integrations using readdir
+  * move all tests to lib/*/test
+  * Updated delimiter
+
 1.1.42 / 2014-07-30
 ==================
 
