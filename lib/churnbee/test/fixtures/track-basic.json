@@ -1,0 +1,24 @@
+{
+  "input": {
+    "userId": "user-id",
+    "event": "my-event",
+    "timestamp": "2014",
+    "type": "track",
+    "properties": {
+      "revenue": 19.99,
+      "description": "some description",
+      "plan": "premium"
+    }
+  },
+  "output": {
+    "amount": 19.99,
+    "reason": "some description",
+    "plan": "premium",
+    "dateTime": "2014-01-01T00:00:00.000Z",
+    "custom": {
+      "description": "some description",
+      "plan": "premium",
+      "revenue": 19.99
+    }
+  }
+}

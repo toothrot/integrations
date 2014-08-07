@@ -1,0 +1,19 @@
+{
+  "input": {
+    "type": "identify",
+    "userId": "user-id",
+    "timestamp": "2014",
+    "traits": {
+      "name": "john",
+      "trait": true
+    }
+  },
+  "output": {
+    "timestamp": 1388534400000,
+    "userId": "user-id",
+    "userName": "john",
+    "userData": {
+      "trait": true
+    }
+  }
+}

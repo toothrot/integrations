@@ -1,0 +1,20 @@
+{
+  "input": {
+    "type": "group",
+    "userId": "user-id",
+    "groupId": "group-id",
+    "traits": {
+      "name": "segment",
+      "site": "https://segment.io"
+    }
+  },
+  "output": {
+    "userId": "user-id",
+    "accountId": "account-id",
+    "accountName": "segment",
+    "accountData": {
+      "name": "segment",
+      "site": "https://segment.io"
+    }
+  }
+}
