@@ -1,4 +1,7 @@
 {
+  "settings": {
+    "urlAddon": true
+  },
   "input": {
     "userId": "user-id",
     "event": "my-event",

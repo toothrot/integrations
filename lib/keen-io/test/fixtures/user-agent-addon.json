@@ -1,4 +1,7 @@
 {
+  "settings": {
+    "uaAddon": true
+  },
   "input": {
     "userId": "user-id",
     "event": "my-event",
