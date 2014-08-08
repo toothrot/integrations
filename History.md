@@ -1,4 +1,14 @@
 
+1.1.44 / 2014-08-07
+==================
+
+ * google analytics: include userId
+ * churnbee: dont check for .events
+ * frontleaf: add fixtures, and fix bug that ignores arrays
+ * drip: add mapper and fixtures
+ * customerio: add mapper
+ * churnbee: add fixtures, and fixes
+
 1.1.43 / 2014-08-06
 ===================
 
