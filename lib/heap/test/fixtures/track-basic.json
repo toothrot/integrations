@@ -1,0 +1,21 @@
+{
+  "settings": {
+    "apiKey": "app-key"
+  },
+  "input": {
+    "type": "track",
+    "userId": "user-id",
+    "event": "my-event",
+    "properties": {
+      "email": "jd@example.com"
+    }
+  },
+  "output": {
+    "app_id": "app-key",
+    "identity": "jd@example.com",
+    "event": "my-event",
+    "properties": {
+      "email": "jd@example.com"
+    }
+  }
+}
