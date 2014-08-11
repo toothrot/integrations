@@ -1,0 +1,18 @@
+{
+  "input": {
+    "type": "identify",
+    "userId": "user-id",
+    "traits": {
+      "trait": true
+    }
+  },
+  "output": {
+    "data": {
+      "distinct_id": "user-id",
+      "properties": {
+        "id": "user-id",
+        "trait": true
+      }
+    }
+  }
+}
