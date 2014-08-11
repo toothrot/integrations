@@ -5,7 +5,10 @@
     "timestamp": "2014",
     "traits": {
       "firstName": "John",
-      "lastName": "Doe"
+      "lastName": "Doe",
+      "time": "2014-01-01",
+      "list": [1, 2, 3],
+      "object": "{}"
     }
   },
   "output": {
@@ -13,6 +16,9 @@
       "_p": "user-id",
       "firstName": "John",
       "lastName": "Doe",
+      "time": 1388534400,
+      "list": "1,2,3",
+      "object": "{}",
       "id": "user-id",
       "_k": "2b93bdf937c54fc7da2b5c6015c273bf3919c273",
       "_t": 1388534400,
