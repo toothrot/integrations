@@ -1,0 +1,28 @@
+{
+  "input": {
+    "type": "track",
+    "userId": "user-id",
+    "timestamp": "2014",
+    "event": "my-event",
+    "properties": {
+      "revenue": 10.99,
+      "prop": true,
+      "email": "jd@example.com",
+      "object": {},
+      "list": [1, 2]
+    }
+  },
+  "output": {
+    "uid": "user-id",
+    "occurred_at": 1388534400,
+    "action_name": "my-event",
+    "properties": {
+      "email": "jd@example.com",
+      "list": "1,2",
+      "object": "{}",
+      "prop": "true",
+      "revenue": "10.99",
+      "revenue_amount": 10.99
+    }
+  }
+}

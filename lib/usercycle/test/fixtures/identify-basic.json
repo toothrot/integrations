@@ -1,0 +1,27 @@
+{
+  "input": {
+    "type": "identify",
+    "userId": "user-id",
+    "timestamp": "2014",
+    "traits": {
+      "firstName": "john",
+      "lastName": "doe",
+      "email": "jd@example.com",
+      "some object": {},
+      "list": ["one", "two"]
+    }
+  },
+  "output": {
+    "uid": "user-id",
+    "occurred_at": 1388534400,
+    "action_name": "come_back",
+    "properties": {
+      "email": "jd@example.com",
+      "first_name": "john",
+      "id": "user-id",
+      "last_name": "doe",
+      "list": "one,two",
+      "some object": "{}"
+    }
+  }
+}
