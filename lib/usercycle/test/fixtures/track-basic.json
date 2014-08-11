@@ -9,7 +9,8 @@
       "prop": true,
       "email": "jd@example.com",
       "object": {},
-      "list": [1, 2]
+      "list": [1, 2],
+      "time": "2014-01-01"
     }
   },
   "output": {
@@ -22,6 +23,7 @@
       "object": "{}",
       "prop": "true",
       "revenue": "10.99",
+      "time": 1388534400,
       "revenue_amount": 10.99
     }
   }
