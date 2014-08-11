@@ -1,0 +1,32 @@
+{
+  "input": {
+    "type": "identify",
+    "userId": "user-id",
+    "traits": {
+      "email": "jd@example.com",
+      "firstName": "john",
+      "lastName": "doe",
+      "trait": true,
+      "nested": {
+        "object": {}
+      }
+    }
+  },
+  "output": {
+    "apikey": "some-api-key",
+    "id": "some-list-id",
+    "double_optin": false,
+    "send_welcome": false,
+    "update_existing": true,
+    "replace_interests": false,
+    "email": { "email": "jd@example.com" },
+    "merge_vars": {
+      "FNAME": "john",
+      "LNAME": "doe",
+      "USERID": "user-id",
+      "nested": null,
+      "trait": true,
+      "id": "user-id"
+    }
+  }
+}
