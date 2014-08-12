@@ -1,0 +1,17 @@
+{
+  "input": {
+    "type": "screen",
+    "userId": "user-id",
+    "timestamp": "2014",
+    "properties": {},
+    "context": {}
+  },
+  "output": {
+    "event": "Loaded a Screen",
+    "properties": {
+      "mp_lib": "Segment.io",
+      "time": 1388534400,
+      "token": "89f86c4aa2ce5b74cb47eb5ec95ad1f9"
+    }
+  }
+}
