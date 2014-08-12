@@ -13,7 +13,8 @@ test: lint
 		--timeout 20s \
 		--require should \
 		--reporter $(REPORTER) \
-		--grep $(GREP)
+		--grep $(GREP) \
+		--bail
 
 test-cov: lib-cov
 	@INTEGRATIONS_COV=1 \
