@@ -1,4 +1,10 @@
 
+1.1.46 / 2014-08-12
+==================
+
+ * outbound: migrating to v2
+ * usercycle: fix for proper settings
+
 1.1.45 / 2014-08-07
 ==================
 
