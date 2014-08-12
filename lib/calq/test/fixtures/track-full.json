@@ -9,6 +9,7 @@
     },
     "context": {
       "ip": "10.0.0.1",
+      "userAgent": "user-agent",
       "screen": {
         "width": 500,
         "height": 400
@@ -28,6 +29,7 @@
     "action_name": "my-event",
     "ip_address": "10.0.0.1",
     "properties": {
+      "$device_agent": "user-agent",
       "$device_resolution": "500x400",
       "$sale_currency": "USD",
       "$sale_value": 19.19,
