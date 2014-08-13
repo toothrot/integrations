@@ -1,10 +1,12 @@
 {
+  "settings": {
+    "trackCategorizedPages": true
+  },
   "input": {
     "type": "page",
     "userId": "user-id",
     "timestamp": "2014",
     "category": "Docs",
-    "name": "Mixpanel",
     "properties": {
       "url": "https://segment.io/docs/integrations/mixpanel/",
       "property": true
@@ -14,11 +16,10 @@
     }
   },
   "output": {
-    "event": "Viewed Docs Mixpanel Page",
+    "event": "Viewed Docs Page",
     "properties": {
       "category": "Docs",
       "ip": "0.0.0.0",
-      "name": "Mixpanel",
       "property": true,
       "mp_lib": "Segment.io",
       "time": 1388534400,

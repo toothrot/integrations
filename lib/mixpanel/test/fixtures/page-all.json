@@ -1,13 +1,16 @@
 {
+  "settings": {
+    "trackAllPages": true
+  },
   "input": {
-    "type": "screen",
+    "type": "page",
     "userId": "user-id",
     "timestamp": "2014",
     "properties": {},
     "context": {}
   },
   "output": {
-    "event": "Loaded a Screen",
+    "event": "Loaded a Page",
     "properties": {
       "mp_lib": "Segment.io",
       "time": 1388534400,

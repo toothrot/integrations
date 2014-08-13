@@ -1,4 +1,7 @@
 {
+  "settings": {
+    "trackNamedPages": true
+  },
   "input": {
     "type": "screen",
     "userId": "user-id",
