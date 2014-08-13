@@ -24,7 +24,6 @@
       "FNAME": "john",
       "LNAME": "doe",
       "USERID": "user-id",
-      "nested": null,
       "trait": true,
       "id": "user-id"
     }
