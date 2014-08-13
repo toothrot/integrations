@@ -33,6 +33,7 @@
     "last_name": "doe",
     "user_agent": "user-agent",
     "delivery_method": "method",
+    "website": "some-website",
     "address": {
       "country": "some-country"
     }
