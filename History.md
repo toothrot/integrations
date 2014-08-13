@@ -1,4 +1,14 @@
 
+1.1.47 / 2014-08-12
+==================
+
+ * keen.io: fixing addons without input
+ * mixpanel tests: use fixtures in api calls
+ * calq tests: use fixtures in api calls
+ * deps: add segmentio/node-reject
+ * calq: use reject()
+ * amplitude tests: use fixtures in api calls
+
 1.1.46 / 2014-08-12
 ==================
 
