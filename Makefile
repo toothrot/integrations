@@ -8,7 +8,7 @@ ifndef NODE_ENV
 include node_modules/make-lint/index.mk
 endif
 
-test: lint
+test:
 	@./node_modules/.bin/mocha $(TESTS) \
 		--timeout 20s \
 		--require should \
@@ -16,16 +16,17 @@ test: lint
 		--grep $(GREP) \
 		--bail
 
-test-cov: lib-cov
-	@INTEGRATIONS_COV=1 \
-		$(MAKE) test \
-		REPORTER=html-cov > coverage.html
-
-lib-cov:
-	@jscoverage lib lib-cov
+test-cov:
+	@./node_modules/.bin/istanbul cover \
+		node_modules/.bin/_mocha $(TESTS) \
+		--report lcovonly \
+		-- -u exports \
+		--require should \
+		--timeout 20s \
+		--reporter dot \
+		--bail
 
 clean:
-	rm -rf lib-cov
-	rm -f coverage.html
+	rm -rf coverage
 
 .PHONY: test
