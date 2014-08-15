@@ -1,0 +1,18 @@
+{
+  "input": {
+    "type": "identify",
+    "anonymousId": "anon-id",
+    "traits": {
+      "bool": true,
+      "created": "2014-01-01",
+      "playlists": 19,
+      "revenue": 19.19,
+      "email": "jd@example.com"
+    }
+  },
+  "output": {
+    "email": "jd@example.com",
+    "key": "hokaisjzaacdxlpaixf4f4yaev",
+    "user_id": "anon-id"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "input": {
+    "type": "track",
+    "anonymousId": "anon-id",
+    "event": "some-event",
+    "properties": {
+      "name": "sony pulse",
+      "purchased": true,
+      "value": 19,
+      "revenue": 19.99,
+      "date": "2014-01-01"
+    }
+  },
+  "output": {
+    "key": "hokaisjzaacdxlpaixf4f4yaev",
+    "event_list": [
+      {
+        "event_key": "some-event:name",
+        "event_type": "str",
+        "event_value": "sony pulse",
+        "user_id": "anon-id"
+      },
+      {
+        "event_key": "some-event:purchased",
+        "event_type": "bool",
+        "event_value": true,
+        "user_id": "anon-id"
+      },
+      {
+        "event_key": "some-event:value",
+        "event_type": "int",
+        "event_value": 19,
+        "user_id": "anon-id"
+      },
+      {
+        "event_key": "some-event:revenue",
+        "event_type": "str",
+        "event_value": 19.99,
+        "user_id": "anon-id"
+      },
+      {
+        "event_key": "some-event:date",
+        "event_type": "str",
+        "event_value": "2014-01-01T00:00:00.000Z",
+        "user_id": "anon-id"
+      }
+    ]
+  }
+}
