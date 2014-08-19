@@ -10,7 +10,7 @@
       "lastName": "doe",
       "email": "jd@example.com",
       "phone": "5555-5555",
-      "position": "job-title",
+      "jobTitle": "job-title",
       "address": {
         "country": "awesome-country"
       }
@@ -26,6 +26,7 @@
     "lastname": "doe",
     "lastName": "doe",
     "id": "user-id",
+    "jobTitle": "job-title",
     "email": "jd@example.com",
     "phone": "5555-5555",
     "address": {
