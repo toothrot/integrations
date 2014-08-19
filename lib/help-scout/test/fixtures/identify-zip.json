@@ -16,7 +16,7 @@
       "address": {
         "city": "some-city",
         "country": "some-country",
-        "postalCode": "postal-code",
+        "zip": "postal-code",
         "state": "some-state",
         "street": "some-street"
       }

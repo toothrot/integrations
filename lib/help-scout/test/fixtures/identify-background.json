@@ -10,15 +10,12 @@
       "firstName": "john",
       "lastName": "doe",
       "email": "jd@example.com",
-      "description": "some-description",
       "company": "Segment",
       "website": "website",
+      "background": "some-background",
       "address": {
         "city": "some-city",
-        "country": "some-country",
-        "postalCode": "postal-code",
-        "state": "some-state",
-        "street": "some-street"
+        "country": "some-country"
       }
     }
   },
@@ -31,14 +28,7 @@
     "lastName": "doe",
     "emails": [{ "value": "jd@example.com" }],
     "websites": [{ "value": "website" }],
-    "background": "some-description",
     "organization": "Segment",
-    "address": {
-      "city": "some-city",
-      "country": "some-country",
-      "lines": ["some-street"],
-      "postalCode": "postal-code",
-      "state": "some-state"
-    }
+    "background": "some-background"
   }
 }

@@ -13,13 +13,11 @@
       "description": "some-description",
       "company": "Segment",
       "website": "website",
-      "address": {
-        "city": "some-city",
-        "country": "some-country",
-        "postalCode": "postal-code",
-        "state": "some-state",
-        "street": "some-street"
-      }
+      "city": "some-city",
+      "country": "some-country",
+      "zip": "postal-code",
+      "state": "some-state",
+      "street": "some-street"
     }
   },
   "output": {
