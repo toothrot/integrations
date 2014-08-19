@@ -12,8 +12,8 @@
       "email": "jd@example.com",
       "description": "some-description",
       "company": "Segment",
-      "website": "website",
-      "phone": "phone",
+      "websites": ["website"],
+      "phones": ["phone"],
       "address": {
         "city": "some-city",
         "country": "some-country",
