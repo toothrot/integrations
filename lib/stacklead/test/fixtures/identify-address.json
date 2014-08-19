@@ -1,0 +1,43 @@
+{
+  "input": {
+    "type": "identify",
+    "userId": "user-id",
+    "traits": {
+      "created": "2014-01-01",
+      "email": "jd@example.com",
+      "website": "some-website",
+      "phone": "some-phone",
+      "name": "john doe",
+      "address": {
+        "country": "some-country",
+        "city": "some-city",
+        "state": "some-state"
+      }
+    },
+    "context": {
+      "ip": "0.0.0.0",
+      "userAgent": "user-agent"
+    }
+  },
+  "output": {
+    "created": 1388534400,
+    "duplicates": false,
+    "email": "jd@example.com",
+    "user_ip": "0.0.0.0",
+    "city": "some-city",
+    "state": "some-state",
+    "website": "some-website",
+    "phone": "some-phone",
+    "name": "john doe",
+    "first_name": "john",
+    "last_name": "doe",
+    "user_agent": "user-agent",
+    "delivery_method": "method",
+    "website": "some-website",
+    "address": {
+      "country": "some-country",
+      "city": "some-city",
+      "state": "some-state"
+    }
+  }
+}
