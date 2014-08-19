@@ -14,7 +14,7 @@
       "company": "Segment",
       "website": "website",
       "phone": "phone",
-      "position": "job-title",
+      "jobTitle": "job-title",
       "address": {
         "city": "some-city",
         "country": "some-country",
