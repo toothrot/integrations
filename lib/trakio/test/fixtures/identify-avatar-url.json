@@ -4,7 +4,7 @@
     "userId": "user-id",
     "traits": {
       "trait": true,
-      "avatar": "avatar-url"
+      "avatarUrl": "avatar-url"
     }
   },
   "output": {
