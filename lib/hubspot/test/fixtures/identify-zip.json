@@ -13,7 +13,7 @@
       "position": "job-title",
       "address": {
         "country": "awesome-country",
-        "postalCode": "some-zip"
+        "zip": "some-zip"
       }
     }
   },
@@ -31,7 +31,7 @@
     "phone": "5555-5555",
     "address": {
       "country": "awesome-country",
-      "postalCode": "some-zip"
+      "zip": "some-zip"
     }
   }
 }
