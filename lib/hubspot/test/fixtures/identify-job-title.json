@@ -10,9 +10,10 @@
       "lastName": "doe",
       "email": "jd@example.com",
       "phone": "5555-5555",
-      "position": "job-title",
-      "city": "awesome-city",
-      "postalCode": "some-zip"
+      "jobTitle": "job-title",
+      "address": {
+        "country": "awesome-country"
+      }
     }
   },
   "output": {
@@ -25,10 +26,11 @@
     "lastname": "doe",
     "lastName": "doe",
     "id": "user-id",
+    "jobTitle": "job-title",
     "email": "jd@example.com",
     "phone": "5555-5555",
-    "city": "awesome-city",
-    "postalCode": "some-zip",
-    "zip": "some-zip"
+    "address": {
+      "country": "awesome-country"
+    }
   }
 }

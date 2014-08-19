@@ -12,9 +12,8 @@
       "email": "jd@example.com",
       "description": "some-description",
       "company": "Segment",
-      "website": "website",
-      "phone": "phone",
-      "position": "job-title",
+      "websites": ["website"],
+      "phones": ["phone"],
       "address": {
         "city": "some-city",
         "country": "some-country",
@@ -36,7 +35,6 @@
     "phones": [{ "value": "phone", "location": "mobile" }],
     "background": "some-description",
     "organization": "Segment",
-    "jobTitle": "job-title",
     "address": {
       "city": "some-city",
       "country": "some-country",

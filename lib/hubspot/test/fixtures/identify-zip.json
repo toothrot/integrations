@@ -11,8 +11,10 @@
       "email": "jd@example.com",
       "phone": "5555-5555",
       "position": "job-title",
-      "city": "awesome-city",
-      "postalCode": "some-zip"
+      "address": {
+        "country": "awesome-country",
+        "zip": "some-zip"
+      }
     }
   },
   "output": {
@@ -27,8 +29,9 @@
     "id": "user-id",
     "email": "jd@example.com",
     "phone": "5555-5555",
-    "city": "awesome-city",
-    "postalCode": "some-zip",
-    "zip": "some-zip"
+    "address": {
+      "country": "awesome-country",
+      "zip": "some-zip"
+    }
   }
 }
