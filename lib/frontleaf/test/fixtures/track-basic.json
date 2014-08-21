@@ -17,6 +17,8 @@
     }
   },
   "output": {
+    "stream": "test",
+    "token": "FTWe9sfDz6DyZA8xxtAIGwRUMOMX6mgL",
     "userId": "user-id",
     "session": "anonymous-id",
     "event": "my-event",
