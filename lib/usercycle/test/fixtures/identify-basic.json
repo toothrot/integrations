@@ -15,7 +15,7 @@
   "output": {
     "uid": "user-id",
     "occurred_at": 1388534400,
-    "action_name": "come_back",
+    "action_name": "came_back",
     "properties": {
       "email": "jd@example.com",
       "time": 1388534400,
