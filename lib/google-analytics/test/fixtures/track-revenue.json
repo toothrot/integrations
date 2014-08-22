@@ -1,0 +1,22 @@
+{
+  "input": {
+    "type": "track",
+    "userId": "user-id",
+    "event": "some-event",
+    "properties": {
+      "revenue": 3.99,
+      "label": "some-label",
+      "category": "some-category"
+    }
+  },
+  "output": {
+    "tid": "UA-27033709-11",
+    "cid": 2710159508,
+    "ea": "some-event",
+    "ec": "some-category",
+    "el": "some-label",
+    "ev": 4,
+    "t": "event",
+    "v": 1
+  }
+}
