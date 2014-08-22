@@ -1,4 +1,12 @@
 
+1.1.49 / 2014-08-22
+==================
+
+ * ga: add campaign info
+ * ga: send context.app
+ * ga: add custom dimensions and metrics, closes #126
+ * ga: get mapper working
+
 1.1.48 / 2014-08-21
 ==================
 
