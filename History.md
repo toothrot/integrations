@@ -1,4 +1,11 @@
 
+1.1.48 / 2014-08-21
+==================
+
+ * amplitude: adding country support
+ * USERcycle: fix `identify` event name to match the frontend
+ * ga: fixing revenue fallback for event value
+
 1.1.47 / 2014-08-12
 ==================
 
